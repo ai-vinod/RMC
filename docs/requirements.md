@@ -128,7 +128,6 @@ Client likes sunshinebji.com and its orange, #F7941D. That orange is the primary
 | Ink secondary | #5A636B | Secondary text, captions, metadata |
 | Hairline | #E7EBEE | Borders and dividers |
 | Text on orange | #241703 or #1A1206 | Any type sitting on an orange ground |
-| WhatsApp green | #25D366 | WhatsApp button only |
 
 **Contrast rule:** #F7941D scores 2.3:1 against white, so white text on an orange ground fails accessibility. Type on orange is #241703 or #1A1206 (around 9:1); orange type on white darkens to #A85C03. The single exception is hero line two, recorded below. **There is no teal anywhere in this palette** — an earlier draft paired orange with #0E4559 and the client rejected it. Orange leads, charcoal partners it, cream softens the gaps.
 
@@ -137,6 +136,12 @@ Client likes sunshinebji.com and its orange, #F7941D. That orange is the primary
 **Direction: A, with D's fact strip** — settled 4 Oct, from four options. White base, charcoal type, orange carried by the nav band, the hero, icons, section rules and card headers. Sections alternate white, cream (#FDF3E6) and charcoal so the page has rhythm rather than one flat field. A charcoal fact strip sits directly under the hero.
 
 **Call-to-action rule: charcoal is the action colour, orange is the brand colour.** A call to action should be the one thing that is not the brand colour; when the nav, hero and buttons are all orange the eye has nowhere to land. Applied as one rule: maximum contrast against whatever sits behind it. On white the call button is charcoal (15:1); on the orange hero it is white. The same holds on every page built from here, so service-page call buttons are charcoal too.
+
+**The rule governs the primary action; the secondary action takes the opposite end** — clarified 4 Oct after Claude Code spotted the ambiguity. On a white ground: Call is charcoal. On the orange hero: Call is white, and WhatsApp beside it is charcoal at 90% opacity, `rgba(26,30,34,.9)`, as built. Two buttons at maximum contrast would compete, so only one wins per surface.
+
+**There is no WhatsApp green on this site.** The approved design uses none, and #25D366 has been removed from the palette. The WhatsApp glyph carries the recognition on its own, green clashes badly with the orange hero, and it was the one colour in the palette belonging to somebody else's brand.
+
+**The white-on-orange exception is a text rule, not a button rule.** It covers hero line two and nothing else. Buttons on orange follow the sentence above.
 
 **Section headings** carry an uppercase kicker, a 23–30px heading in Archivo Narrow, and a short gradient rule beneath. Small grey labels were what made the first draft read as empty.
 
@@ -261,11 +266,13 @@ Static site built with Astro, deployed from a git repo. No database, no plugins,
 | Hosting billed to client | Rs. 6,000 / year |
 | Contact form | Web3Forms or similar — static sites have no backend |
 | Blog | Markdown files; Astro content collection with required title and description, so the build fails if either is missing |
-| Google reviews | Five hand-picked, hardcoded. Decided 4 Oct — no API, no key, no cost, nothing tied to the hosting. Copied from the public listing, with a button through to it. Refresh once or twice a year |
+| Google reviews | Five hand-picked, hardcoded. Decided 4 Oct — no API, no key, no cost, nothing tied to the hosting. Copied from the public listing, with a button through to it. Refresh once or twice a year. Quoted exactly as the patient wrote them — never reworded, corrected or shortened in the data file. A card that runs long is truncated visually with an ellipsis and a link through to the listing; the stored text stays whole. Choosing which five to show is ours; editing what they say is not |
 | Analytics | GA4 and Search Console, both under the clinic's own Google account |
 | SEO foundation | As specified in seo-brief.md: MedicalClinic and IndividualPhysician schema |
 | Canonical host | https://www.raniclinickanchi.com/ — www canonical, HTTPS, trailing slash on every URL. Set once as site in astro.config.mjs with trailingSlash: 'always'; .htaccess 301s the non-www host and adds a missing slash. Decided 4 Oct |
 | Fonts | Self-hosted woff2 from /fonts, two families at most, font-display: swap. No Google Fonts CDN — it is a third-party connection before first paint and it costs LCP. Decided 4 Oct |
+| Privacy page URL | /privacy/ — settled 4 Oct. seo-brief.md says /privacy-policy/; that is overridden. Nothing is live yet, so there is no redirect to keep |
+| Versions | Astro 7. TypeScript pinned to 5 because @astrojs/check conflicts with TypeScript 7. Scaffold committed 4 Oct as 9dc80f0 |
 
 **Patient videos.** Vertical 9:16 cards in a horizontal rail, because phone footage, Shorts and Reels are all vertical. Three to six links. Tapping a card opens a lightbox that loads the embed then — never five iframes sitting in the page, which would cost most of the mobile Lighthouse score. The thumbnail comes from the video.
 
@@ -297,6 +304,8 @@ Live on the holding page since 2 Oct. All of this carries into the Astro build; 
 | directions\_click | Tap of the Google Maps link | link\_url |
 
 The click handler is one delegated listener at the foot of the page. It checks whether the clicked element sits inside a tel: link, and if so sends call\_click with the placement taken from whether the link carries the callbtn class. Maps links are handled the same way. Nothing is hard-wired to a specific button, so the same code keeps working as pages are added.
+
+**The placement values**, fixed 4 Oct so every component reports the same vocabulary: `header` (top-bar call button), `hero`, `footer`, `floating` (any sticky mobile bar) and `contact_page`. The holding page sent `main_button`, which is now retired. GA4 keeps old values in historical rows, so any report spanning the switch shows both — expected, not a fault.
 
 **Why it matters:** GA4 does not track tel: taps on its own. Without this the reports would show visits and nothing else, and on this clinic's site the phone call is the only conversion there is.
 

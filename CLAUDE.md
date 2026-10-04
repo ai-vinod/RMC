@@ -67,9 +67,14 @@ Magic Remedies Act 1954. These are not style preferences.
 
 - Orange `#F7941D` is the brand colour. **Charcoal `#1A1E22` is the call-to-action colour.**
   The one thing you most want tapped is the one thing that is not orange.
-- One exception: hero line two is white on the orange gradient. That is roughly 2.3:1, below
-  WCAG AA, and it is deliberate. Nowhere else does white sit on orange — text on an orange
-  ground is `#241703` or `#1A1206`.
+- The rule governs the **primary** action on a surface; the secondary action takes the
+  opposite end, so the two don't compete. On white: Call is charcoal. On the orange hero:
+  Call is white, WhatsApp beside it is `rgba(26,30,34,.9)`.
+- **No WhatsApp green.** `#25D366` is not in this palette. The glyph carries the
+  recognition, and green fights the orange.
+- One exception, and it is a **text** rule, not a button rule: hero line two is white on the
+  orange gradient. Roughly 2.3:1, below WCAG AA, deliberate. Nowhere else does white sit on
+  orange — text on an orange ground is `#241703` or `#1A1206`.
 - Every colour, type size and spacing value lives in `src/styles/tokens.css`. No component
   defines a colour.
 - Two font families at most, self-hosted woff2 from `/fonts`, `font-display: swap`. No Google
