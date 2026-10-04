@@ -128,12 +128,13 @@ Small line under the ortho card:
 
 **Why patients choose Rani ****Multi Speciality** **Clinic**
 
-> Four qualified doctors in one clinic, so one visit can cover more than one problem.
+**Settled 4 Oct — this replaces the earlier draft that stood here.** That version led on opening hours, which is not a reason anyone chooses a clinic. These three are the ones in the approved design.
 
-> Three specialities under one roof. Forty years of practice in Kanchipuram. \
+> **Here since 1985** — Two generations of the same family treating patients in Kanchipuram.
 
->
-> Open seven days a week. Morning consultations every day, including Sunday.
+> **Three specialities, one visit** — Skin, bones and teeth seen under one roof, without being sent elsewhere.
+
+> **Specialist-led care** — Each doctor practises in one field rather than general medicine.
 
 **Section headings**
 

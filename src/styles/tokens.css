@@ -87,6 +87,13 @@
   --white-15: rgba(255, 255, 255, 0.15);
   --white-12: rgba(255, 255, 255, 0.12);
   --border-ghost: rgba(36, 23, 3, 0.45);
+  --scrim: rgba(8, 10, 12, 0.88); /* lightbox backdrop */
+  --white-16: rgba(255, 255, 255, 0.16);
+  --white-76: rgba(255, 255, 255, 0.76);
+  --white-93: rgba(255, 255, 255, 0.93);
+  --gradient-video-scrim: linear-gradient(to top, rgba(10, 12, 14, 0.82) 0%, rgba(10, 12, 14, 0.12) 46%, rgba(10, 12, 14, 0) 70%);
+  --shadow-play: 0 3px 12px rgba(0, 0, 0, 0.3);
+  --video-frame: #111417; /* lightbox player background */
 
   /* Type families */
   --font-body: 'Archivo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;

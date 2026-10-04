@@ -1,0 +1,272 @@
+---
+import Section from './Section.astro';
+import SectionHead from './SectionHead.astro';
+import Icon from './Icon.astro';
+import { videos } from '../data/videos';
+import { videosSection } from '../data/homeCopy';
+import { embedUrl } from '../lib/video';
+
+// Videos whose URL cannot be turned into a player are left out rather than shown as a dead card
+const cards = videos
+  .map((video) => ({ ...video, embed: embedUrl(video) }))
+  .filter((card): card is typeof card & { embed: string } => card.embed !== null);
+---
+
+<Section tone="cream">
+  <SectionHead kicker={videosSection.kicker} heading={videosSection.heading} />
+  <div class="rail" id="video-rail">
+    {
+      cards.map((card) => (
+        <button type="button" class="vcard" data-embed={card.embed} data-title={card.title}>
+          <span class="t">
+            <span class={`src ${card.platform}`}>{videosSection.platformLabels[card.platform]}</span>
+            <span class="play">
+              <Icon name="play" />
+            </span>
+            <span class="cap">
+              <b>{card.title}</b>
+              <span>{card.category}</span>
+            </span>
+            <span class="sr">
+              {videosSection.a11y.play} {card.title}
+            </span>
+          </span>
+        </button>
+      ))
+    }
+  </div>
+  <div class="railnav">
+    <button type="button" data-step="-1" aria-label={videosSection.a11y.previous}>
+      <Icon name="chevronLeft" strokeWidth={2.2} round />
+    </button>
+    <button type="button" data-step="1" aria-label={videosSection.a11y.next}>
+      <Icon name="chevronRight" strokeWidth={2.2} round />
+    </button>
+  </div>
+
+  <!-- Nothing here loads until a card is tapped: the iframe is created on click and removed on close -->
+  <dialog class="lb" id="video-lightbox" aria-label="Patient story">
+    <div class="lbbox">
+      <div class="vframe" id="video-frame"></div>
+      <button type="button" class="lbclose" aria-label={videosSection.a11y.close}>×</button>
+    </div>
+  </dialog>
+</Section>
+
+<script>
+  const rail = document.getElementById('video-rail')!;
+  const lb = document.getElementById('video-lightbox') as HTMLDialogElement;
+  const frame = document.getElementById('video-frame')!;
+
+  rail.addEventListener('click', (e) => {
+    const card = (e.target as Element).closest<HTMLElement>('.vcard');
+    if (!card) return;
+    const iframe = document.createElement('iframe');
+    iframe.src = card.dataset.embed!;
+    iframe.title = card.dataset.title ?? '';
+    iframe.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+    iframe.allowFullscreen = true;
+    iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+    frame.replaceChildren(iframe);
+    lb.setAttribute('aria-label', card.dataset.title ?? '');
+    lb.showModal();
+  });
+
+  // Closing removes the iframe, which also stops playback
+  lb.addEventListener('close', () => frame.replaceChildren());
+  lb.querySelector('.lbclose')!.addEventListener('click', () => lb.close());
+  lb.addEventListener('click', (e) => {
+    if (e.target === lb) lb.close();
+  });
+
+  document.querySelectorAll<HTMLElement>('.railnav button').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const card = rail.querySelector<HTMLElement>('.vcard');
+      if (!card) return;
+      rail.scrollBy({ left: Number(btn.dataset.step) * (card.offsetWidth + 13) * 2, behavior: 'smooth' });
+    });
+  });
+</script>
+
+<style>
+  .rail {
+    display: flex;
+    gap: 13px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: var(--space-1);
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .rail::-webkit-scrollbar {
+    display: none;
+  }
+  .vcard {
+    flex: 0 0 auto;
+    width: clamp(152px, 46vw, 196px);
+    scroll-snap-align: start;
+    border: 0;
+    padding: 0;
+    background: none;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    display: block;
+  }
+  .t {
+    aspect-ratio: 9 / 16;
+    background: var(--gradient-orange);
+    position: relative;
+    display: grid;
+    place-items: center;
+  }
+  .t::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-video-scrim);
+  }
+  .play {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: var(--white-93);
+    display: grid;
+    place-items: center;
+    position: relative;
+    z-index: 1;
+    box-shadow: var(--shadow-play);
+  }
+  .play :global(svg) {
+    width: 16px;
+    height: 16px;
+    color: var(--ink);
+    margin-left: 3px;
+  }
+  .src {
+    position: absolute;
+    top: 9px;
+    left: 9px;
+    z-index: 1;
+    border-radius: 5px;
+    padding: 3px 8px;
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+  .src.youtube {
+    background: var(--brand-youtube);
+  }
+  .src.instagram {
+    background: var(--gradient-instagram-badge);
+  }
+  .cap {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    padding: 12px 13px;
+    color: var(--white);
+  }
+  .cap b {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 14.5px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  .cap span {
+    display: block;
+    margin-top: 3px;
+    font-size: 11.5px;
+    color: var(--white-76);
+  }
+  .sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+  .railnav {
+    display: none;
+    gap: var(--space-2);
+    margin-top: 14px;
+  }
+  @media (min-width: 640px) {
+    .railnav {
+      display: flex;
+    }
+  }
+  .railnav button {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1.5px solid var(--ink);
+    background: var(--white);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+  }
+  .railnav :global(svg) {
+    width: 16px;
+    height: 16px;
+    color: var(--ink);
+  }
+
+  /* Lightbox */
+  .lb {
+    border: 0;
+    padding: 20px;
+    background: transparent;
+    max-width: none;
+    max-height: none;
+    width: 100%;
+    height: 100%;
+    place-items: center;
+  }
+  .lb[open] {
+    display: grid;
+  }
+  .lb::backdrop {
+    background: var(--scrim);
+  }
+  .lbbox {
+    width: min(360px, 86vw);
+    background: var(--black);
+    border-radius: 14px;
+    overflow: hidden;
+    position: relative;
+  }
+  .vframe {
+    aspect-ratio: 9 / 16;
+    background: var(--video-frame);
+  }
+  .vframe :global(iframe) {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+  }
+  .lbclose {
+    position: absolute;
+    top: 9px;
+    right: 9px;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 0;
+    background: var(--white-16);
+    color: var(--white);
+    font-size: 19px;
+    line-height: 1;
+    cursor: pointer;
+  }
+</style>

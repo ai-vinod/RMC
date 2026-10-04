@@ -106,7 +106,7 @@ Ordered the way a patient decides: what you do, who does it, whether others trus
 11. **Find us** — address, directions note, map button, timings panel
 12. **Footer** — brand and tagline, page links, specialities, contact block, social icons, copyright
 
-**The three reasons in section 7**, settled 4 Oct after the first set was judged too weak: *Here since 1985 — two generations of the same family treating patients in Kanchipuram*; *Three specialities, one visit — skin, bones and teeth under one roof, without being sent elsewhere*; *Specialist-led care — each doctor practises in one field rather than general medicine*. Opening hours are not a reason to choose a clinic, which is what the first version got wrong.
+**The three reasons in section 7**, settled 4 Oct after the first set was judged too weak: *Here since 1985 — two generations of the same family treating patients in Kanchipuram*; *Three specialities, one visit — Skin, bones and teeth seen under one roof, without being sent elsewhere*; *Specialist-led care — each doctor practises in one field rather than general medicine*. Opening hours are not a reason to choose a clinic, which is what the first version got wrong.
 
 **Patient videos are back in for launch**, reversing the 4 Oct decision. Five links supplied, in the content document. The compliance point returns with them: still needed in writing from Dr. Madhavan that he has chosen to publish patient video content.
 
@@ -136,6 +136,8 @@ Client likes sunshinebji.com and its orange, #F7941D. That orange is the primary
 **Direction: A, with D's fact strip** — settled 4 Oct, from four options. White base, charcoal type, orange carried by the nav band, the hero, icons, section rules and card headers. Sections alternate white, cream (#FDF3E6) and charcoal so the page has rhythm rather than one flat field. A charcoal fact strip sits directly under the hero.
 
 **Call-to-action rule: charcoal is the action colour, orange is the brand colour.** A call to action should be the one thing that is not the brand colour; when the nav, hero and buttons are all orange the eye has nowhere to land. Applied as one rule: maximum contrast against whatever sits behind it. On white the call button is charcoal (15:1); on the orange hero it is white. The same holds on every page built from here, so service-page call buttons are charcoal too.
+
+**The contrast rule applies to type that carries meaning, not to decoration** — clarified 4 Oct. The 01–03 numerals in the "why patients choose" cards stay brand orange `#F7941D` on white at 2.3:1, as the design draws them. They are large, `aria-hidden`, and carry nothing the heading and body text do not already say; the order is in the DOM. If they ever become something the copy refers to — "see reason 02" — they stop being decoration and darken to `#A85C03`.
 
 **The rule governs the primary action; the secondary action takes the opposite end** — clarified 4 Oct after Claude Code spotted the ambiguity. On a white ground: Call is charcoal. On the orange hero: Call is white, and WhatsApp beside it is charcoal at 90% opacity, `rgba(26,30,34,.9)`, as built. Two buttons at maximum contrast would compete, so only one wins per surface.
 

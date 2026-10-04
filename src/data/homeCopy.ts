@@ -68,7 +68,16 @@ export const whyUs = {
   // The three reasons settled 4 Oct, from requirements.md (Homepage layout). content.md's "Final copy" block still has the first set.
   reasons: [
     { title: 'Here since 1985', text: 'Two generations of the same family treating patients in Kanchipuram.' },
-    { title: 'Three specialities, one visit', text: 'Skin, bones and teeth under one roof, without being sent elsewhere.' },
+    { title: 'Three specialities, one visit', text: 'Skin, bones and teeth seen under one roof, without being sent elsewhere.' },
     { title: 'Specialist-led care', text: 'Each doctor practises in one field rather than general medicine.' },
   ],
+} as const;
+
+export const videosSection = {
+  kicker: 'In their own words',
+  heading: 'Patient stories',
+  /** Names on the source badge */
+  platformLabels: { instagram: 'Instagram', youtube: 'YouTube' },
+  /** Screen-reader labels, not visible text */
+  a11y: { play: 'Play video:', previous: 'Previous', next: 'Next', close: 'Close video' },
 } as const;
