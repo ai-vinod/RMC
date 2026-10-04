@@ -1,0 +1,100 @@
+/* Every colour, type size and spacing value lives here. No component invents a hex value. */
+
+@font-face {
+  font-family: 'Archivo';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/archivo-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Archivo';
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/archivo-600.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Archivo';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/archivo-700.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Archivo';
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/archivo-800.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Archivo Narrow';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/archivo-narrow-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Archivo Narrow';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/archivo-narrow-700.woff2') format('woff2');
+}
+
+:root {
+  /* Colour: requirements.md, Design direction */
+  --orange: #f7941d;
+  --orange-light: #fdbb5c;
+  --orange-dark: #ee8109; /* gradient start stop */
+  --gradient-orange: linear-gradient(118deg, #ee8109 0%, #f7941d 46%, #fdbb5c 100%);
+  --orange-text: #a85c03; /* orange type on white */
+  --cream: #fdf3e6;
+  --cream-deep: #f9e3c6;
+  --ink: #1a1e22; /* body text, fact strip, review band, every CTA */
+  --ink-secondary: #5a636b;
+  --hairline: #e7ebee;
+  --white: #ffffff;
+  --on-orange: #241703; /* text on an orange ground */
+  --on-orange-alt: #1a1206;
+  --whatsapp: #25d366; /* WhatsApp button only */
+  /* Muted type on charcoal, taken from homepage-approved.html */
+  --on-ink-muted: #9aa6ae;
+  --on-ink-soft: #b4bec5;
+
+  /* Type families */
+  --font-body: 'Archivo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Archivo Narrow', 'Archivo', sans-serif;
+
+  /* Type sizes: requirements.md headings, plus the scale in homepage-approved.html */
+  --text-base: 16px;
+  --text-sm: 14.5px;
+  --text-xs: 13px;
+  --text-kicker: 10.5px;
+  --text-h2: clamp(23px, 4.6vw, 30px);
+  --text-h3: 19px;
+  --text-hero-1: clamp(28px, 6.3vw, 42px);
+  --text-hero-2: clamp(18px, 3.8vw, 25px);
+  --text-numeral: clamp(25px, 5.4vw, 33px);
+  --leading-body: 1.55;
+  --leading-heading: 1.15;
+  --tracking-kicker: 0.2em;
+
+  /* Spacing: from the approved homepage */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --gutter: 24px;
+  --container: 1100px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --rule-width: 54px;
+  --rule-height: 4px;
+  --tap-target: 44px;
+}

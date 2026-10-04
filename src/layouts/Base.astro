@@ -1,0 +1,120 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { clinic } from '../data/clinic';
+import { absoluteImageUrl } from '../lib/images';
+
+interface Props {
+  title: string;
+  description?: string;
+  /** Path relative to /public, from a src/data field. Defaults to the clinic image. */
+  image?: string;
+  /** Preview copies only. The live site needs no robots tag. */
+  noindex?: boolean;
+}
+
+const GA_ID = 'G-0JR621K377';
+
+const { title, description = '', image = clinic.image, noindex = false } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogImage = absoluteImageUrl(image, Astro.site!);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex" />}
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={clinic.name} />
+    <meta property="og:title" content={title} />
+    {description && <meta property="og:description" content={description} />}
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preload" href="/fonts/archivo-400.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/archivo-narrow-700.woff2" as="font" type="font/woff2" crossorigin />
+
+    <!-- GA4, production builds only so local work does not pollute the reports. Standard gtag.js, no Tag Manager. -->
+    {
+      import.meta.env.PROD && (
+        <>
+          <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} />
+          <script is:inline define:vars={{ GA_ID }}>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+              dataLayer.push(arguments);
+            }
+            window.gtag = gtag;
+            gtag('js', new Date());
+            gtag('config', GA_ID);
+          </script>
+        </>
+      )
+    }
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+
+    <!--
+      One delegated listener for the whole site, so every page is tracked without wiring any button.
+      call_click:       any tel: link          (link_url, placement)
+      whatsapp_click:   any wa.me link         (placement)
+      directions_click: any google.com/maps link (link_url). Short maps.app.goo.gl links are the
+                        reviews link, so they are deliberately not matched.
+      Placement comes from data-placement, else from whether the link sits in the header or footer.
+      Nothing a visitor typed is ever sent.
+    -->
+    <script is:inline>
+      document.addEventListener('click', function (e) {
+        var a = e.target instanceof Element ? e.target.closest('a[href]') : null;
+        if (!a) return;
+        var href = a.getAttribute('href') || '';
+        var placement =
+          a.getAttribute('data-placement') ||
+          (a.closest('header') ? 'header' : a.closest('footer') ? 'footer' : 'main_button');
+        var event = null;
+        var params = {};
+        if (href.indexOf('tel:') === 0) {
+          event = 'call_click';
+          params = { link_url: href, placement: placement };
+        } else if (/^https?:\/\/(wa\.me|api\.whatsapp\.com)\//.test(href)) {
+          event = 'whatsapp_click';
+          params = { placement: placement };
+        } else if (/^https?:\/\/(www\.)?google\.com\/maps/.test(href)) {
+          event = 'directions_click';
+          params = { link_url: href };
+        }
+        if (event && typeof window.gtag === 'function') window.gtag('event', event, params);
+      });
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  .skip-link {
+    position: absolute;
+    left: var(--space-2);
+    top: -100px;
+    z-index: 100;
+    background: var(--ink);
+    color: var(--white);
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-sm);
+  }
+  .skip-link:focus {
+    top: var(--space-2);
+  }
+</style>

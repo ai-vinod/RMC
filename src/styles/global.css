@@ -1,0 +1,48 @@
+@import 'tailwindcss';
+@import './tokens.css';
+
+/* Expose the tokens as Tailwind utilities (bg-orange, text-ink, font-heading...) without redefining any value. */
+@theme inline {
+  --color-orange: var(--orange);
+  --color-orange-light: var(--orange-light);
+  --color-orange-text: var(--orange-text);
+  --color-cream: var(--cream);
+  --color-cream-deep: var(--cream-deep);
+  --color-ink: var(--ink);
+  --color-ink-secondary: var(--ink-secondary);
+  --color-hairline: var(--hairline);
+  --color-on-orange: var(--on-orange);
+  --color-whatsapp: var(--whatsapp);
+  --font-body: var(--font-body);
+  --font-heading: var(--font-heading);
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--white);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+  line-height: var(--leading-heading);
+}
+
+:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 2px;
+}
+
+address {
+  font-style: normal;
+}

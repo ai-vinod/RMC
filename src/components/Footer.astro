@@ -1,0 +1,28 @@
+---
+import { clinic } from '../data/clinic';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="inner">
+    <p class="copy">© {year} {clinic.name}, {clinic.town}</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--ink);
+    color: var(--on-ink-soft);
+    margin-top: var(--space-8);
+  }
+  .inner {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: var(--space-6) var(--gutter);
+  }
+  .copy {
+    margin: 0;
+    font-size: var(--text-xs);
+  }
+</style>

@@ -1,0 +1,89 @@
+---
+import { clinic } from '../data/clinic';
+import { imageUrl } from '../lib/images';
+---
+
+<header class="site-header">
+  <div class="top">
+    <a class="brand" href="/">
+      <span class="plate"><img src={imageUrl(clinic.logo)} alt="" width="36" height="40" /></span>
+      <span class="name">{clinic.name}</span>
+    </a>
+    <a class="call" href={`tel:${clinic.phone.tel}`} data-placement="header">
+      <small>Call Now</small>
+      <b>{clinic.phone.display}</b>
+    </a>
+  </div>
+  <nav class="navband" aria-label="Main"></nav>
+</header>
+
+<style>
+  .site-header {
+    background: var(--white);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  .top {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-4) var(--gutter);
+    max-width: var(--container);
+    margin: 0 auto;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    color: inherit;
+    text-decoration: none;
+  }
+  .plate {
+    background: var(--ink);
+    border-radius: var(--radius-sm);
+    padding: 7px;
+    display: grid;
+    place-items: center;
+  }
+  .plate img {
+    display: block;
+    width: auto;
+    height: 40px;
+  }
+  .name {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.1;
+  }
+  .call {
+    margin-left: auto;
+    min-height: var(--tap-target);
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--ink);
+    color: var(--white);
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+  }
+  .call small {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.75;
+  }
+  .call b {
+    font-family: var(--font-heading);
+    font-size: 20px;
+    font-variant-numeric: tabular-nums;
+    line-height: 1.05;
+  }
+  .navband {
+    background: var(--gradient-orange);
+    min-height: 40px;
+  }
+</style>

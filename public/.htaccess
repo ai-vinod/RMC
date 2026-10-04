@@ -1,0 +1,14 @@
+RewriteEngine On
+
+# One 301: force https and the www host together
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteRule ^ https://www.raniclinickanchi.com%{REQUEST_URI} [L,R=301]
+
+# Add a missing trailing slash (skip real files and anything with an extension)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !\.[A-Za-z0-9]+$
+RewriteCond %{REQUEST_URI} !/$
+RewriteRule ^(.*)$ /$1/ [L,R=301]
+
+ErrorDocument 404 /404.html
