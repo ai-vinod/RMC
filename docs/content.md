@@ -100,7 +100,7 @@ This is the deliverable. The A/B table above is working material; this block is 
 
 **Page title**
 
-> Skin, Ortho & Dental Clinic in Kanchipuram | Rani Multispecialty Clinic
+> Skin, Ortho & Dental Clinic in Kanchipuram | Rani Multi Speciality Clinic
 
 **Meta description**
 
@@ -126,7 +126,7 @@ Small line under the ortho card:
 
 > In clinic one Sunday a month. Video consultations on other days.
 
-**Why patients choose Rani ****M****ul****tispeci****alt****y ****Clinic**
+**Why patients choose Rani ****Multi Speciality** **Clinic**
 
 > Four qualified doctors in one clinic, so one visit can cover more than one problem.
 
@@ -197,6 +197,62 @@ The full YouTube or Instagram URL. The thumbnail and the length come from the vi
 | YouTube | [https://www.youtube.com/@ranimultispecalityclinic/](https://www.youtube.com/@ranimultispecalityclinic/shorts) |
 
 **Where these end up.** At build time each table becomes a small data file in the project — reviews, videos and social links kept separate from the page markup. That means adding a sixth video or swapping a review later is a one-line change to a data file, not an edit to the homepage. You will not touch any HTML to update these.
+
+## Homepage labels and microcopy
+
+Every small label the homepage shows — kickers, buttons, field labels, link text. Lifted verbatim from the approved design on 4 Oct, because the client approved the page with these words on it. Recorded here so the rule holds: all text comes from this document, never from the HTML.
+
+| Where | Text |
+| --- | --- |
+| Header call button, small label | Call now |
+| Nav labels | Home · Skin & Diabetes · Bones & Joints · About · Blog · Contact |
+| Hero kicker | Multi speciality clinic · Kanchipuram |
+| Hero line one | Skin, Ortho and Dental Clinic |
+| Hero line two | Caring for Kanchipuram Since 1985 |
+| Hero sub-line | Four qualified doctors across dermatology, diabetes, orthopaedics and dentistry. |
+| Open-now chip | Open now until 1.30 pm |
+| Hero buttons | 99453 89639 · WhatsApp · Clinic timings · Book an appointment |
+| Fact strip | 1985 / Caring for Kanchipuram — 4 / Qualified doctors — 2 / Generations of doctors |
+| Specialities kicker | What we treat |
+| Specialities heading | Three specialities, one clinic |
+| Speciality card links | See treatments → (skin, ortho) · Contact us → (dental) |
+| Doctors kicker | Meet the team |
+| Doctors heading | Our doctors |
+| Why-us kicker | Why patients come to us |
+| Why-us heading | Why patients choose Rani Multi Speciality Clinic |
+| Videos kicker | In their own words |
+| Videos heading | Patient stories |
+| Reviews kicker | Patient reviews |
+| Reviews heading | What our patients say |
+| Reviews rating line | 130+ reviews on Google |
+| Reviews link | Read all reviews on Google → |
+| Blog kicker | From the clinic |
+| Blog heading | Health advice from our doctors |
+| Find-us kicker | Visit us |
+| Find-us heading | Find us in Kanchipuram |
+| Map button | Open in Google Maps |
+| Timings panel rows | Mon – Sat · Morning / Mon – Sat · Evening / Sunday · Morning |
+| Footer tagline | Skin and diabetes, bones and joints, and dental care under one roof. Caring for families in Kanchipuram since 1985. |
+| Footer column headings | Pages · Specialities |
+| Footer legal link | Privacy policy |
+
+**The address, as it appears on the site:** 5B, Sangupani Vinayagar Koil Street, Big Kanchipuram, Tamil Nadu 631502. The directions note beneath it reads: *Look for Aruna Mahal Kalyana Mandapam on Sangupani Vinayagar Koil Street — the clinic is right beside it.*
+
+**Speciality card descriptions:** skin — *Skin specialist care for acne, hair fall, allergies and diabetes.* Ortho — *Orthopaedic care for knee pain, back pain and joint problems.* plus the availability line *In clinic one Sunday a month. Video consultations on other days.* Dental — *Root canal treatment, implants and routine dental care.*
+
+**The hero call button carries the number, not the words "Call now"** — corrected 4 Oct; the first version of the table above got this wrong. The design shows 99453 89639 on the hero button. "Call now" survives only as the small uppercase label above the number in the header bar.
+
+**The open-now chip, all three states.** The design only ever showed the open state, so the other two are written here for the first time. A patient landing at 9pm should be told when to call back, not shown nothing.
+
+| State | Text |
+| --- | --- |
+| Open | Open now until 1.30 pm · Open now until 8.30 pm |
+| Closed, opens again today | Closed · Opens 6.30 pm |
+| Closed until tomorrow | Closed · Opens 10.30 am tomorrow |
+
+All three are worked out in Indian time from clinic.timings. The chip is hidden only when JavaScript is off.
+
+**Hero sub-line — the short version wins.** "Final copy — homepage" ends the sub-line with *Open seven days a week.*; the approved design does not. The design is right here: the open-now chip sits directly beneath it and says the same thing live, so the sentence is clutter in that one spot. It stays in the meta description, where it earns its place. Reverse this if you disagree — it is your line, and I changed it rather than asking only because it was blocking the build.
 
 ## Skin & Diabetes page
 

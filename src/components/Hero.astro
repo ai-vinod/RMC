@@ -9,6 +9,7 @@ const sessions = clinic.timings.map((t) => ({
   days: t.days,
   opens: t.opens,
   closes: t.closes,
+  opensLabel: formatTime(t.opens),
   closesLabel: formatTime(t.closes),
 }));
 ---
@@ -20,13 +21,13 @@ const sessions = clinic.timings.map((t) => ({
     <span class="l2">{hero.lineTwo}</span>
   </h1>
   <p class="sub">{hero.subLine}</p>
-  <!-- Shown by the script below only while the clinic is open (Asia/Kolkata). Hidden otherwise and without JS. -->
-  <div class="openchip" hidden data-sessions={JSON.stringify(sessions)} data-prefix={hero.openNowPrefix}>
+  <!-- Three states, worked out in Asia/Kolkata by the script below. Hidden only when JavaScript is off. -->
+  <div class="openchip" hidden data-sessions={JSON.stringify(sessions)} data-copy={JSON.stringify(hero.chip)}>
     <i></i><span></span>
   </div>
   <div class="acts">
     <a class="btn btn-call" href={`tel:${clinic.phone.tel}`} data-placement="hero">
-      <Icon name="phone" />{hero.callButton}
+      <Icon name="phone" />{clinic.phone.display}
     </a>
     <a class="btn btn-wa" href={whatsappUrl} data-placement="hero" rel="noopener">
       <Icon name="whatsapp" />{hero.whatsappButton}
@@ -41,8 +42,11 @@ const sessions = clinic.timings.map((t) => ({
 <script>
   const chip = document.querySelector<HTMLElement>('.openchip');
   if (chip) {
-    type Session = { days: string[]; opens: string; closes: string; closesLabel: string };
+    type Session = { days: string[]; opens: string; closes: string; opensLabel: string; closesLabel: string };
     const sessions: Session[] = JSON.parse(chip.dataset.sessions ?? '[]');
+    const copy = JSON.parse(chip.dataset.copy ?? '{}');
+    const week = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
     const parts = new Intl.DateTimeFormat('en-US', {
       timeZone: 'Asia/Kolkata',
       weekday: 'long',
@@ -52,10 +56,31 @@ const sessions = clinic.timings.map((t) => ({
     }).formatToParts(new Date());
     const get = (type: string) => parts.find((p) => p.type === type)?.value ?? '';
     const day = get('weekday');
-    const now = `${get('hour')}:${get('minute')}`;
-    const open = sessions.find((s) => s.days.includes(day) && now >= s.opens && now < s.closes);
+    const now = get('hour') + ':' + get('minute');
+
+    const today = sessions.filter((s) => s.days.includes(day));
+    const open = today.find((s) => now >= s.opens && now < s.closes);
+    const laterToday = today.find((s) => s.opens > now);
+
+    let text = '';
+    let isOpen = false;
     if (open) {
-      chip.querySelector('span')!.textContent = `${chip.dataset.prefix} ${open.closesLabel}`;
+      isOpen = true;
+      text = copy.open + ' ' + open.closesLabel;
+    } else if (laterToday) {
+      text = copy.closed + ' · ' + copy.opens + ' ' + laterToday.opensLabel;
+    } else {
+      // First session on the next day the clinic opens
+      for (let i = 1; i <= 7 && !text; i++) {
+        const nextDay = week[(week.indexOf(day) + i) % 7];
+        const first = sessions.filter((s) => s.days.includes(nextDay)).sort((a, b) => (a.opens < b.opens ? -1 : 1))[0];
+        if (first) text = copy.closed + ' · ' + copy.opens + ' ' + first.opensLabel + ' ' + (i === 1 ? copy.tomorrow : nextDay);
+      }
+    }
+
+    if (text) {
+      chip.querySelector('span')!.textContent = text;
+      chip.classList.toggle('is-closed', !isOpen);
       chip.hidden = false;
     }
   }
@@ -136,6 +161,9 @@ const sessions = clinic.timings.map((t) => ({
     border-radius: 50%;
     background: var(--status-open);
     display: block;
+  }
+  .openchip.is-closed i {
+    background: var(--on-ink-muted);
   }
   .acts {
     display: flex;

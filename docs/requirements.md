@@ -141,6 +141,14 @@ Client likes sunshinebji.com and its orange, #F7941D. That orange is the primary
 
 **There is no WhatsApp green on this site.** The approved design uses none, and #25D366 has been removed from the palette. The WhatsApp glyph carries the recognition on its own, green clashes badly with the orange hero, and it was the one colour in the palette belonging to somebody else's brand.
 
+**Green that is not WhatsApp green.** The open-now chip's dot is `#5DCB94`, a status indicator meaning the clinic is open. It stays. The rule above bans borrowing WhatsApp's brand green for a button; it is not a ban on the colour green.
+
+**Text on orange is a short scale, not one value** — read off the approved design 4 Oct: hero headline `#241703`, hero paragraph `#3E2807`, hero kicker `#50340A`, nav labels `#2B1B03`. The smaller and lighter the element, the darker the brown, so each one holds its weight against the gradient. Review text on the charcoal band is `#C9D2D8`.
+
+**Platform brand colours** for the Instagram, Facebook, YouTube and Google marks are approved — the client asked for the social icons in their own colours. They appear on those marks and nowhere else.
+
+**Container width is not settled by the design.** The approved file was drawn inside a 968px preview frame and has no site container of its own — its sections just pad 24px and fill whatever width they are given. 968px is therefore an artefact of the mock, not a decision. Hero and body copy are already capped by `max-width` in `ch`, so a wider container does not stretch the text.
+
 **The white-on-orange exception is a text rule, not a button rule.** It covers hero line two and nothing else. Buttons on orange follow the sentence above.
 
 **Section headings** carry an uppercase kicker, a 23–30px heading in Archivo Narrow, and a short gradient rule beneath. Small grey labels were what made the first draft read as empty.
@@ -386,6 +394,7 @@ Everything that needs doing, in the order it needs doing. Tick off anything alre
 - [ ] Test on real phones, not just a laptop
 - [ ] Contact form wired and a test enquiry actually received
 - [ ] Pre-launch review with Daniel, including the DNS cutover
+- [ ] **Launch blocker.** Two of the five reviews in reviews.ts contain cure language — "completely cured" and "painfree". Replace both with reviews free of cure or outcome claims before the site goes live. Decided 4 Oct to build with them in place, since building publishes nothing; the swap is a data edit to reviews.ts, not a rebuild. A quoted review is never reworded, so the fix is choosing different ones
 
 ### At launch
 
