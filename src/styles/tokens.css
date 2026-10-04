@@ -62,8 +62,30 @@
   --on-ink-muted: #9aa6ae;
   --on-ink-soft: #b4bec5;
   /* Further values taken from homepage-approved.html */
-  --nav-ink: #2b1b03; /* nav labels on the orange band */
+  /* Text on orange is a short scale: the smaller and lighter the element, the darker the brown */
+  --nav-ink: #2b1b03; /* nav labels */
+  --hero-paragraph: #3e2807;
+  --hero-kicker: #50340a;
+  /* hero headline is --on-orange (#241703) */
+  --on-ink-review: #c9d2d8; /* review text on the charcoal band */
+  --status-open: #5dcb94; /* open-now dot: a status indicator, not WhatsApp green */
   --black: #000000;
+
+  /* Platform brand colours, approved for the social and source marks only */
+  --brand-instagram-1: #f9ce34;
+  --brand-instagram-2: #ee2a7b;
+  --brand-instagram-3: #6228d7;
+  --gradient-instagram: linear-gradient(45deg, var(--brand-instagram-1) 0%, var(--brand-instagram-2) 52%, var(--brand-instagram-3) 100%);
+  --gradient-instagram-badge: linear-gradient(45deg, var(--brand-instagram-1), var(--brand-instagram-2) 55%, var(--brand-instagram-3));
+  --brand-facebook: #1877f2;
+  --brand-youtube: #ff0000;
+  --brand-google: #4285f4;
+
+  /* Translucent values from the approved design */
+  --ink-90: rgba(26, 30, 34, 0.9);
+  --ink-88: rgba(26, 30, 34, 0.88);
+  --white-15: rgba(255, 255, 255, 0.15);
+  --border-ghost: rgba(36, 23, 3, 0.45);
 
   /* Type families */
   --font-body: 'Archivo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -93,11 +115,12 @@
   --space-7: 48px;
   --space-8: 64px;
   --gutter: 24px;
-  --container: 968px; /* width of the approved homepage frame */
+  --container: 1120px;
   --radius-sm: 6px;
   --radius-md: 10px;
   --rule-width: 54px;
   --rule-height: 4px;
   --tap-target: 44px;
   --shadow-call: 0 2px 0 var(--black);
+  --shadow-hero-call: 0 3px 0 rgba(90, 50, 0, 0.3);
 }

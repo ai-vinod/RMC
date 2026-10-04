@@ -1,0 +1,196 @@
+---
+import Icon from './Icon.astro';
+import { clinic, whatsappUrl } from '../data/clinic';
+import { hero } from '../data/homeCopy';
+import { formatTime } from '../lib/time';
+
+// Sessions for the open-now chip, all from clinic.timings
+const sessions = clinic.timings.map((t) => ({
+  days: t.days,
+  opens: t.opens,
+  closes: t.closes,
+  closesLabel: formatTime(t.closes),
+}));
+---
+
+<section class="hero edge">
+  <p class="kick">{hero.kicker}</p>
+  <h1>
+    <span class="l1">{hero.lineOne}</span>
+    <span class="l2">{hero.lineTwo}</span>
+  </h1>
+  <p class="sub">{hero.subLine}</p>
+  <!-- Shown by the script below only while the clinic is open (Asia/Kolkata). Hidden otherwise and without JS. -->
+  <div class="openchip" hidden data-sessions={JSON.stringify(sessions)} data-prefix={hero.openNowPrefix}>
+    <i></i><span></span>
+  </div>
+  <div class="acts">
+    <a class="btn btn-call" href={`tel:${clinic.phone.tel}`} data-placement="hero">
+      <Icon name="phone" />{hero.callButton}
+    </a>
+    <a class="btn btn-wa" href={whatsappUrl} data-placement="hero" rel="noopener">
+      <Icon name="whatsapp" />{hero.whatsappButton}
+    </a>
+  </div>
+  <div class="acts2">
+    <a class="btn-ghost" href={hero.timingsHref}><Icon name="clock" />{hero.timingsButton}</a>
+    <a class="btn-ghost" href={hero.bookHref}><Icon name="calendar" />{hero.bookButton}</a>
+  </div>
+</section>
+
+<script>
+  const chip = document.querySelector<HTMLElement>('.openchip');
+  if (chip) {
+    type Session = { days: string[]; opens: string; closes: string; closesLabel: string };
+    const sessions: Session[] = JSON.parse(chip.dataset.sessions ?? '[]');
+    const parts = new Intl.DateTimeFormat('en-US', {
+      timeZone: 'Asia/Kolkata',
+      weekday: 'long',
+      hour: '2-digit',
+      minute: '2-digit',
+      hourCycle: 'h23',
+    }).formatToParts(new Date());
+    const get = (type: string) => parts.find((p) => p.type === type)?.value ?? '';
+    const day = get('weekday');
+    const now = `${get('hour')}:${get('minute')}`;
+    const open = sessions.find((s) => s.days.includes(day) && now >= s.opens && now < s.closes);
+    if (open) {
+      chip.querySelector('span')!.textContent = `${chip.dataset.prefix} ${open.closesLabel}`;
+      chip.hidden = false;
+    }
+  }
+</script>
+
+<style>
+  .hero {
+    background: var(--gradient-orange);
+    padding-block: 32px 34px;
+    color: var(--on-orange);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    right: -70px;
+    top: -70px;
+    width: 230px;
+    height: 230px;
+    border-radius: 50%;
+    background: var(--white-15);
+  }
+  .hero > * {
+    position: relative;
+  }
+  .kick {
+    font-size: var(--text-kicker);
+    font-weight: 700;
+    letter-spacing: var(--tracking-kicker);
+    text-transform: uppercase;
+    color: var(--hero-kicker);
+    margin: 0 0 10px;
+  }
+  h1 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    margin: 0 0 12px;
+    text-transform: uppercase;
+    line-height: 1.04;
+  }
+  .l1 {
+    display: block;
+    font-size: var(--text-hero-1);
+  }
+  .l2 {
+    display: block;
+    font-size: var(--text-hero-2);
+    color: var(--white); /* the one deliberate white-on-orange exception */
+    margin-top: 4px;
+    letter-spacing: 0.005em;
+  }
+  .sub {
+    margin: 0 0 16px;
+    font-size: var(--text-base);
+    font-weight: 600;
+    max-width: 44ch;
+    color: var(--hero-paragraph);
+  }
+  .openchip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--ink-88);
+    color: var(--white);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: var(--text-xs);
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .openchip[hidden] {
+    display: none;
+  }
+  .openchip i {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--status-open);
+    display: block;
+  }
+  .acts {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 11px;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 14px 22px;
+    border-radius: var(--radius-sm);
+    font-weight: 800;
+    font-size: 17px;
+    text-decoration: none;
+    font-variant-numeric: tabular-nums;
+  }
+  .btn :global(svg),
+  .btn-ghost :global(svg) {
+    flex: none;
+  }
+  .btn :global(svg) {
+    width: 19px;
+    height: 19px;
+  }
+  .btn-call {
+    background: var(--white);
+    color: var(--ink);
+    box-shadow: var(--shadow-hero-call);
+  }
+  .btn-wa {
+    background: var(--ink-90);
+    color: var(--white);
+    font-size: 15px;
+  }
+  .acts2 {
+    display: flex;
+    gap: 9px;
+    flex-wrap: wrap;
+  }
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border: 2px solid var(--border-ghost);
+    border-radius: var(--radius-sm);
+    font-weight: 700;
+    font-size: 13.5px;
+    color: var(--on-orange);
+    text-decoration: none;
+  }
+  .btn-ghost :global(svg) {
+    width: 16px;
+    height: 16px;
+  }
+</style>
