@@ -289,6 +289,7 @@ Static site built with Astro, deployed from a git repo. No database, no plugins,
 | Fonts | Self-hosted woff2 from /fonts, two families at most, font-display: swap. No Google Fonts CDN — it is a third-party connection before first paint and it costs LCP. Decided 4 Oct |
 | Privacy page URL | /privacy/ — settled 4 Oct. seo-brief.md says /privacy-policy/; that is overridden. Nothing is live yet, so there is no redirect to keep |
 | Versions | Astro 7. TypeScript pinned to 5 because @astrojs/check conflicts with TypeScript 7. Scaffold committed 4 Oct as 9dc80f0 |
+| Unfinished pages | One draft flag per page, set in the page's frontmatter. It drives both the noindex meta tag and exclusion from the sitemap through @astrojs/sitemap's filter, so the two can never disagree. Decided 5 Oct, after the stub pages turned out to be empty, indexable and listed in the sitemap at the same time. Removing the flag indexes the page and adds it to the sitemap in one move |
 
 **Patient videos.** Vertical 9:16 cards in a horizontal rail, because phone footage, Shorts and Reels are all vertical. Three to six links. Tapping a card opens a lightbox that loads the embed then — never five iframes sitting in the page, which would cost most of the mobile Lighthouse score. The thumbnail comes from the video.
 
@@ -406,6 +407,7 @@ Everything that needs doing, in the order it needs doing. Tick off anything alre
 - [ ] **Launch blocker.** Two of the five reviews in reviews.ts contain cure language — "completely cured" and "painfree". Replace both with reviews free of cure or outcome claims before the site goes live. Decided 4 Oct to build with them in place, since building publishes nothing; the swap is a data edit to reviews.ts, not a rebuild. A quoted review is never reworded, so the fix is choosing different ones
 - [ ] **Launch blocker.** Written confirmation from Dr. Madhavan that he has chosen to publish patient video testimonials. Raised when the videos went back in on 4 Oct and still not obtained. The section is built and the videos are in the data file, so nothing stops this going live by accident — which is exactly why it needs ticking before launch, not after
 - [ ] Open each patient video in a normal browser on a real phone and confirm the embed plays. The browser pane could not verify this; Instagram embeds fail often enough that it has to be checked on the real thing
+- [ ] No page still carries `draft: true`. One grep answers it, and it covers both the noindex tags and the sitemap at once
 
 ### At launch
 

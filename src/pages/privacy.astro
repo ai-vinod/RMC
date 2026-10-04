@@ -1,6 +1,9 @@
 ---
 import Base from '../layouts/Base.astro';
+
+// Set to false when the page's copy is approved: it makes the page indexable and adds it to the sitemap
+const draft = true;
 ---
 
-<Base title="Privacy | Rani Multi Speciality Clinic">
+<Base title="Privacy | Rani Multi Speciality Clinic" draft={draft}>
 </Base>

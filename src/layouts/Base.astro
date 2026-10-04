@@ -13,13 +13,18 @@ interface Props {
   description?: string;
   /** An imported image from a src/data field. Defaults to the clinic image. */
   image?: ImageMetadata;
-  /** Preview copies only. The live site needs no robots tag. */
+  /**
+   * A page still being written. Set `const draft = true;` in the page's frontmatter and pass it here.
+   * It adds noindex here and removes the page from the sitemap (see astro.config.mjs), from that one flag.
+   */
+  draft?: boolean;
+  /** For pages that are finished but must stay out of search, like the 404 page. Not a draft. */
   noindex?: boolean;
 }
 
 const GA_ID = 'G-0JR621K377';
 
-const { title, description = '', image = clinic.image, noindex = false } = Astro.props;
+const { title, description = '', image = clinic.image, draft = false, noindex = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 // 1200px wide JPEG for link previews, never the multi-megabyte original
 const ogImage = absoluteUrl(await getImage({ src: image, width: 1200, format: 'jpg' }), Astro.site);
@@ -37,7 +42,7 @@ const ogImage = absoluteUrl(await getImage({ src: image, width: 1200, format: 'j
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon.png" type="image/png" sizes="48x48" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    {noindex && <meta name="robots" content="noindex" />}
+    {(draft || noindex) && <meta name="robots" content="noindex" />}
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={clinic.name} />
