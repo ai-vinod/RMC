@@ -27,7 +27,7 @@ export const videos: Video[] = [
   {
     platform: 'instagram',
     url: 'https://www.instagram.com/reel/C8cOBV9SW3P/',
-    title: 'Invisalign day!',
+    title: 'Clear aligner treatment',
     category: 'Dental',
   },
   {
