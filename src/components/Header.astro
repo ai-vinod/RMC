@@ -2,14 +2,14 @@
 import Icon from './Icon.astro';
 import { clinic } from '../data/clinic';
 import { nav, callLabel } from '../data/nav';
-import { imageUrl } from '../lib/images';
+import { Image } from 'astro:assets';
 
 const path = Astro.url.pathname;
 ---
 
 <header class="top edge">
     <a class="brand" href="/">
-      <span class="plate"><img src={imageUrl(clinic.logo)} alt="" width="26" height="32" /></span>
+      <span class="plate"><Image src={clinic.logo} alt="" width={52} height={57} loading="eager" /></span>
       <span>
         <span class="nm">{clinic.name}</span>
         <span class="loc">{clinic.town}</span>
@@ -57,7 +57,7 @@ const path = Astro.url.pathname;
     place-items: center;
     flex: none;
   }
-  .plate img {
+  .plate :global(img) {
     display: block;
     width: 26px;
     height: 32px;

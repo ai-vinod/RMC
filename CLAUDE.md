@@ -95,6 +95,17 @@ Magic Remedies Act 1954. These are not style preferences.
 - Patient videos are 9:16, in a horizontal rail, loaded into a lightbox on tap. Never five
   iframes sitting in the page.
 - Budgets: LCP ≤ 2.5s, INP ≤ 200ms, CLS ≤ 0.1, Lighthouse mobile 90+.
+- **Every section is checked at 390px before it is committed, and no page ever scrolls
+  horizontally.** The video and review rails scroll inside themselves; the page does not.
+  Check with `document.documentElement.scrollWidth > window.innerWidth` — it must be false.
+- **Every photograph lives in `src/assets/images/` and goes through Astro's image pipeline**
+  (`astro:assets`). Astro only processes what sits under `src/` — anything in `public/` is
+  copied to the server untouched, at whatever size it arrived. The clinic photos are phone
+  originals at several MB each; unoptimised they cost more Lighthouse points than everything
+  else on this list combined. Width, height and `loading="lazy"` below the fold.
+  `favicon.svg` and the fonts stay in `public/`; every image moves.
+- Schema needs absolute image URLs, and an import gives a relative one. `Schema.astro` wraps
+  each: `new URL(photo.src, Astro.site).href`.
 - Any preview or staging copy carries `noindex` and `Disallow: /`. The repo stays private.
 
 ## Do not build

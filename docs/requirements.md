@@ -203,13 +203,12 @@ rani-clinic/
 │  ├─ .htaccess           # 301 non-www → www, add missing trailing slash, ErrorDocument 404
 │  ├─ favicon.svg
 │  ├─ robots.txt
-│  ├─ fonts/              # self-hosted woff2, two families at most
-│  └─ images/
-│     ├─ doctors/
-│     ├─ clinic/
-│     └─ logo/
+│  └─ fonts/              # self-hosted woff2, two families at most
 │
 └─ src/
+   ├─ assets/
+   │  └─ images/          # doctors/, clinic/, logo/ — processed by astro:assets
+   │
    ├─ data/               # everything that changes without the design changing
    │  ├─ clinic.ts         # name, address, phone, WhatsApp, email, timings, maps link
    │  ├─ doctors.ts        # name, qualifications, role, photo, which page
@@ -253,6 +252,12 @@ rani-clinic/
 **Why `src/data/` matters more than anything else here.** The phone number appears in the header, the hero, the footer, the contact page and the schema. In `clinic.ts` it exists once. Same for timings, the address, the five reviews and the video links. A year from now, changing the clinic's evening hours is one line in one file and every page follows. Without this it is a hunt through six pages and the certainty of missing one.
 
 **TypeScript, not JSON, for the data files** — settled 4 Oct, matching seo-brief.md. A `.ts` file is typed and imported directly by the components, so a missing phone number or a misspelt key fails the build. The same mistake in a `.json` file renders `undefined` onto a live page and nobody notices for a month.
+
+**Photographs live in `src/assets/images/`, not `public/images/`** — corrected 4 Oct. Astro's image pipeline only processes what sits under `src/`; anything in `public/` is copied to the server untouched, at whatever size it arrived. That matters here because the clinic photos are phone originals at several megabytes, and the logo is a 1197×1314 PNG displayed at 26×32. The data files hold imports rather than path strings, and Astro emits resized WebP with a hashed filename.
+
+**Two things stay in `public/`:** `favicon.svg`, because it is referenced at a fixed path the pipeline cannot rewrite, and the fonts. Everything else that is an image moves.
+
+**Consequence for schema.** An imported image gives a build-time path like `/_astro/dr-madhavan.a1b2c3.webp`, which is relative. JSON-LD needs absolute URLs, so `Schema.astro` wraps each one: `new URL(photo.src, Astro.site).href`. Miss this and the schema validates but every image URL in it is broken.
 
 **Why `tokens.css`.** Every colour and type size defined in one place. No component invents a hex value. When the client asks for a slightly deeper orange, it is one line.
 

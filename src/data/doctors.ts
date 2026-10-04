@@ -1,3 +1,7 @@
+import type { ImageMetadata } from 'astro';
+import paramanantham from '../assets/images/doctors/dr-paramanantham-skin.jpeg';
+import madhavan from '../assets/images/doctors/dr-madhavan-ortho.jpeg';
+
 export type Speciality = 'skin' | 'ortho' | 'dental';
 
 export interface Doctor {
@@ -9,8 +13,8 @@ export interface Doctor {
   qualifications: string;
   role: string;
   speciality: Speciality;
-  /** Path relative to /public, no leading slash, or null while the photo is outstanding */
-  photo: string | null;
+  /** Imported photo, or null while the photo is outstanding */
+  photo: ImageMetadata | null;
   /** Service page this doctor links to, or null where none exists in v1 */
   page: string | null;
   /** Extra line shown with the role */
@@ -24,7 +28,7 @@ export const doctors: Doctor[] = [
     qualifications: 'MBBS, DD, Dip. in Diabetes Medicine',
     role: 'Dermatologist and diabetologist',
     speciality: 'skin',
-    photo: 'images/doctors/dr-paramanantham-skin.jpeg',
+    photo: paramanantham as ImageMetadata,
     page: '/skin-and-diabetes/',
     note: '40 years of experience',
   },
@@ -35,9 +39,9 @@ export const doctors: Doctor[] = [
     // Training and title, not a statement about equipment at this clinic. See requirements.md, "The doctors".
     role: 'Trauma and robotic joint replacement surgeon',
     speciality: 'ortho',
-    photo: 'images/doctors/dr-madhavan-ortho.jpeg',
+    photo: madhavan as ImageMetadata,
     page: '/bones-and-joints/',
-    note: 'In clinic one Sunday a month; video consultations on other days',
+    note: 'In clinic one Sunday a month',
   },
   {
     id: 'dr-p-sudharsan',

@@ -54,3 +54,10 @@ export const specialities = {
     },
   ],
 } as const;
+
+export const doctorsSection = {
+  kicker: 'Meet the team',
+  heading: 'Our doctors',
+  /** The small label above each name, matching the speciality card titles */
+  fieldLabels: { skin: 'Skin & Diabetes', ortho: 'Bones & Joints', dental: 'Dental' },
+} as const;

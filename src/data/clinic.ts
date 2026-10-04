@@ -1,3 +1,7 @@
+import type { ImageMetadata } from 'astro';
+import logo from '../assets/images/logo/logo-raw.png';
+import entrance from '../assets/images/clinic/clinic-entrance.jpeg';
+
 export type DayName = 'Monday' | 'Tuesday' | 'Wednesday' | 'Thursday' | 'Friday' | 'Saturday' | 'Sunday';
 
 export interface Session {
@@ -63,9 +67,9 @@ export const clinic = {
     },
   ] satisfies Session[],
 
-  /** Paths relative to /public, no leading slash. Build URLs with imageUrl() */
-  logo: 'images/logo/logo-raw.png',
-  image: 'images/clinic/clinic-entrance.jpeg',
+  /** Imported so astro:assets can process them. Schema and og:image wrap them with absoluteUrl(). */
+  logo: logo as ImageMetadata,
+  image: entrance as ImageMetadata,
 };
 
 export const whatsappUrl = `https://wa.me/${clinic.whatsapp.number}?text=${encodeURIComponent(clinic.whatsapp.message)}`;
