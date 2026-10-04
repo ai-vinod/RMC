@@ -90,3 +90,8 @@ export const reviewsSection = {
   countLine: '130+ reviews on Google',
   linkText: 'Read all reviews on Google →',
 } as const;
+
+export const blogSection = {
+  kicker: 'From the clinic',
+  heading: 'Health advice from our doctors',
+} as const;
