@@ -9,9 +9,15 @@ import VideoRail from '../components/VideoRail.astro';
 import ReviewRail from '../components/ReviewRail.astro';
 import BlogTeasers from '../components/BlogTeasers.astro';
 import FindUs from '../components/FindUs.astro';
+import Schema from '../components/Schema.astro';
+import { homeSeo } from '../data/homeCopy';
+import { clinicNode, websiteNode } from '../lib/schema';
+
+const nodes = [await clinicNode(Astro.site!), websiteNode(Astro.site!)];
 ---
 
-<Base title="Rani Multi Speciality Clinic">
+<Base title={homeSeo.title} description={homeSeo.description}>
+  <Schema slot="head" nodes={nodes} />
   <Hero />
   <FactStrip />
   <SpecialityCards />

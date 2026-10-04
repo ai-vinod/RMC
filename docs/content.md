@@ -100,7 +100,7 @@ This is the deliverable. The A/B table above is working material; this block is 
 
 **Page title**
 
-> Skin, Ortho & Dental Clinic in Kanchipuram | Rani Multi Speciality Clinic
+> Skin, Ortho & Dental Clinic in Kanchipuram | Rani Clinic
 
 **Meta description**
 
@@ -258,6 +258,18 @@ All three are worked out in Indian time from clinic.timings. The chip is hidden 
 **Video fallback link — added 5 Oct.** Instagram and YouTube embeds refuse to play often enough to plan for: a private account, a login wall, a region block, an app-only video. A visitor who taps a patient story and gets an empty black frame has been failed twice over. Beneath the player, always visible, never only on error: **Watch on Instagram ↗** or **Watch on YouTube ↗**, matching whichever platform that video's link points at.
 
 **Blog section link — added 5 Oct.** The design has no link out of the blog teasers, which leaves the nav as the only route to `/blog/`. Beneath the three cards: **See all articles →**, matching the arrow pattern used by *See treatments →* and *Read all reviews on Google →*. It appears only when the section does, so it is hidden with everything else while the collection is empty.
+
+**Homepage title — shortened 5 Oct.** The full brand name made the title 73 characters, which Google truncates around 56. Rather than let the tail get cut, the brand shortens: **Skin, Ortho & Dental Clinic in Kanchipuram | Rani Clinic**, 56 characters. The keywords and the town lead, nothing is cut, and "Rani Clinic" is already the short form Vin chose for the domain. Anyone searching the full name still finds the site — the domain, the H1 and every page carry it.
+
+**Footer lines — settled 5 Oct.** Three pieces of wording the microcopy table did not cover.
+
+| Line | Text |
+| --- | --- |
+| Hours | Mon–Sat 10.30 am–1.30 pm and 6.30 pm–8.30 pm / Sunday 10.30 am–1.30 pm |
+| Copyright | © 2026 Rani Multi Speciality Clinic, Kanchipuram |
+| Credit | Site by Dotwin Web Services |
+
+The times come from `clinic.timings`, so changing an hour changes the footer. "All rights reserved" is left off on purpose — copyright is automatic under the Berne Convention and the phrase adds nothing in Indian law. The credit is unlinked until dotwin.xyz is live; it becomes a link then, from one field in `social.ts`. Tell Dr. Madhavan the credit is there rather than letting him find it.
 
 **Blog categories are a fixed set:** Skin, Diabetes, Orthopaedics, Dental. Required on every post, enforced in the collection schema. Free text would give four spellings of "dermatology" by the third month, and at four articles a month these tags become how the blog is navigated.
 

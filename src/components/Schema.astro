@@ -1,0 +1,11 @@
+---
+interface Props {
+  /** JSON-LD nodes for this page, from src/lib/schema.ts */
+  nodes: Record<string, unknown>[];
+}
+
+const { nodes } = Astro.props;
+const json = JSON.stringify({ '@context': 'https://schema.org', '@graph': nodes });
+---
+
+<script type="application/ld+json" set:html={json} />

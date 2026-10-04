@@ -1,3 +1,5 @@
+import { clinic as clinicData } from './clinic';
+
 /**
  * Homepage words, from docs/content.md ("Final copy — homepage" and "Homepage labels and microcopy").
  * Never take wording from docs/design/homepage-approved.html.
@@ -121,3 +123,9 @@ export const footer = {
   /** Compact hours lines in the contact column, taken from the approved design. Not yet in content.md's microcopy table. */
   hours: { monSat: 'Mon–Sat', and: 'and', sunday: 'Sunday' },
 } as const;
+
+export const homeSeo = {
+  // 56 characters, nothing for Google to cut. Shortened 5 Oct from the full brand name (73).
+  title: 'Skin, Ortho & Dental Clinic in Kanchipuram | Rani Clinic',
+  description: `Skin, diabetes, orthopaedic and dental care in Kanchipuram since ${clinicData.established}. Four qualified doctors, open seven days a week. Call ${clinicData.phone.display}.`,
+};
