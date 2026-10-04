@@ -24,3 +24,33 @@ export const facts = {
   generations: 2,
   generationsLabel: 'Generations of doctors',
 };
+
+export const specialities = {
+  kicker: 'What we treat',
+  heading: 'Three specialities, one clinic',
+  cards: [
+    {
+      title: 'Skin & Diabetes',
+      icon: 'skin',
+      line: 'Skin specialist care for acne, hair fall, allergies and diabetes.',
+      linkText: 'See treatments →',
+      href: '/skin-and-diabetes/',
+    },
+    {
+      title: 'Bones & Joints',
+      icon: 'bones',
+      line: 'Orthopaedic care for knee pain, back pain and joint problems.',
+      note: 'In clinic one Sunday a month. Video consultations on other days.',
+      linkText: 'See treatments →',
+      href: '/bones-and-joints/',
+    },
+    {
+      title: 'Dental',
+      icon: 'tooth',
+      line: 'Root canal treatment, implants and routine dental care.',
+      linkText: 'Contact us →',
+      // No dental page in v1; repoint when it is built
+      href: '/contact/',
+    },
+  ],
+} as const;

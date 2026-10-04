@@ -1,0 +1,42 @@
+---
+interface Props {
+  kicker: string;
+  heading: string;
+  /** Kicker colour on a charcoal band */
+  dark?: boolean;
+}
+
+const { kicker, heading, dark = false } = Astro.props;
+---
+
+<p class:list={['kicker', { dark }]}>{kicker}</p>
+<h2>{heading}</h2>
+<div class="rule"></div>
+
+<style>
+  .kicker {
+    font-size: var(--text-kicker);
+    font-weight: 700;
+    letter-spacing: var(--tracking-kicker);
+    text-transform: uppercase;
+    color: var(--orange-text);
+    margin: 0 0 7px;
+  }
+  .kicker.dark {
+    color: var(--orange-light);
+  }
+  h2 {
+    font-family: var(--font-heading);
+    font-size: var(--text-h2);
+    font-weight: 700;
+    margin: 0 0 4px;
+    line-height: var(--leading-heading);
+  }
+  .rule {
+    width: var(--rule-width);
+    height: var(--rule-height);
+    background: var(--gradient-orange);
+    border-radius: 2px;
+    margin: 0 0 22px;
+  }
+</style>

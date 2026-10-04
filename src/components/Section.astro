@@ -1,0 +1,29 @@
+---
+interface Props {
+  /** White, cream wash or charcoal band, as in the approved design */
+  tone?: 'white' | 'cream' | 'dark';
+  id?: string;
+}
+
+const { tone = 'white', id } = Astro.props;
+---
+
+<section class:list={['section', `tone-${tone}`, 'edge']} id={id}>
+  <slot />
+</section>
+
+<style>
+  .section {
+    padding-block: 34px;
+  }
+  .tone-white {
+    background: var(--white);
+  }
+  .tone-cream {
+    background: var(--cream);
+  }
+  .tone-dark {
+    background: var(--ink);
+    color: var(--white);
+  }
+</style>
