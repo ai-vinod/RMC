@@ -17,7 +17,14 @@ const cards = videos
   <div class="rail" id="video-rail">
     {
       cards.map((card) => (
-        <button type="button" class="vcard" data-embed={card.embed} data-title={card.title}>
+        <button
+          type="button"
+          class="vcard"
+          data-embed={card.embed}
+          data-title={card.title}
+          data-url={card.url}
+          data-watch={`${videosSection.watchOn} ${videosSection.platformLabels[card.platform]} ↗`}
+        >
           <span class="t">
             <span class={`src ${card.platform}`}>{videosSection.platformLabels[card.platform]}</span>
             <span class="play">
@@ -48,6 +55,8 @@ const cards = videos
   <dialog class="lb" id="video-lightbox" aria-label="Patient story">
     <div class="lbbox">
       <div class="vframe" id="video-frame"></div>
+      <!-- Always shown: a blocked embed gives no error event, the frame just stays black -->
+      <a class="fallback" id="video-fallback" target="_blank" rel="noopener noreferrer"></a>
       <button type="button" class="lbclose" aria-label={videosSection.a11y.close}>×</button>
     </div>
   </dialog>
@@ -57,6 +66,7 @@ const cards = videos
   const rail = document.getElementById('video-rail')!;
   const lb = document.getElementById('video-lightbox') as HTMLDialogElement;
   const frame = document.getElementById('video-frame')!;
+  const fallback = document.getElementById('video-fallback') as HTMLAnchorElement;
 
   rail.addEventListener('click', (e) => {
     const card = (e.target as Element).closest<HTMLElement>('.vcard');
@@ -68,6 +78,8 @@ const cards = videos
     iframe.allowFullscreen = true;
     iframe.referrerPolicy = 'strict-origin-when-cross-origin';
     frame.replaceChildren(iframe);
+    fallback.href = card.dataset.url!;
+    fallback.textContent = card.dataset.watch ?? '';
     lb.setAttribute('aria-label', card.dataset.title ?? '');
     lb.showModal();
   });
@@ -239,7 +251,8 @@ const cards = videos
     background: var(--scrim);
   }
   .lbbox {
-    width: min(360px, 86vw);
+    /* Never taller than the screen: 9:16 frame plus the link underneath */
+    width: min(360px, 86vw, calc((100dvh - 120px) * 9 / 16));
     background: var(--black);
     border-radius: 14px;
     overflow: hidden;
@@ -254,6 +267,16 @@ const cards = videos
     height: 100%;
     border: 0;
     display: block;
+  }
+  .fallback {
+    display: block;
+    padding: 12px 14px;
+    text-align: center;
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--white);
+    text-decoration: none;
+    background: var(--black);
   }
   .lbclose {
     position: absolute;

@@ -36,6 +36,8 @@ export const clinic = {
     'https://www.google.com/maps/place/Rani+Multi+Speciality+Clinic+-+Skin,+Diabetic,+Dental,+Bones+%26+Joints,+Orthopaedic+Care+%7C+Kanchipuram,+Tamil+Nadu/@12.8380649,79.7055714,17z/data=!3m1!4b1!4m6!3m5!1s0x3a52c2574e3c75d5:0xfa48903076d3144a!8m2!3d12.8380649!4d79.7055714!16s%2Fg%2F11f3bkkyg2?entry=ttu&g_ep=EgoyMDI2MDkzMC4wIKXMDSoASAFQAw%3D%3D',
   /** Short link behind "Read all reviews on Google" */
   reviewsUrl: 'https://maps.app.goo.gl/UnBQ3r3yjymLFgN96',
+  /** Google Business Profile rating, per requirements.md. Refresh with the reviews. */
+  googleRating: '4.6',
 
   phone: {
     display: '99453 89639',

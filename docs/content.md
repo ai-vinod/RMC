@@ -255,6 +255,8 @@ All three are worked out in Indian time from clinic.timings. The chip is hidden 
 
 **Hero sub-line — the short version wins.** "Final copy — homepage" ends the sub-line with *Open seven days a week.*; the approved design does not. The design is right here: the open-now chip sits directly beneath it and says the same thing live, so the sentence is clutter in that one spot. It stays in the meta description, where it earns its place. Reverse this if you disagree — it is your line, and I changed it rather than asking only because it was blocking the build.
 
+**Video fallback link — added 5 Oct.** Instagram and YouTube embeds refuse to play often enough to plan for: a private account, a login wall, a region block, an app-only video. A visitor who taps a patient story and gets an empty black frame has been failed twice over. Beneath the player, always visible, never only on error: **Watch on Instagram ↗** or **Watch on YouTube ↗**, matching whichever platform that video's link points at.
+
 ## Skin & Diabetes page
 
 The lead page. Dr. Paramanantham is the clinic's main draw and the only specialist consulting in person right now, so this one gets the deepest content and the first pass of effort.

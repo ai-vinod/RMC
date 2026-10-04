@@ -78,6 +78,15 @@ export const videosSection = {
   heading: 'Patient stories',
   /** Names on the source badge */
   platformLabels: { instagram: 'Instagram', youtube: 'YouTube' },
+  /** Fallback link under the player, always shown: "Watch on Instagram ↗" */
+  watchOn: 'Watch on',
   /** Screen-reader labels, not visible text */
   a11y: { play: 'Play video:', previous: 'Previous', next: 'Next', close: 'Close video' },
+} as const;
+
+export const reviewsSection = {
+  kicker: 'Patient reviews',
+  heading: 'What our patients say',
+  countLine: '130+ reviews on Google',
+  linkText: 'Read all reviews on Google →',
 } as const;

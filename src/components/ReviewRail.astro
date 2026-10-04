@@ -1,0 +1,130 @@
+---
+import Section from './Section.astro';
+import SectionHead from './SectionHead.astro';
+import { clinic } from '../data/clinic';
+import { reviews } from '../data/reviews';
+import { reviewsSection } from '../data/homeCopy';
+
+const stars = (n: number) => '★'.repeat(n);
+---
+
+<Section tone="dark">
+  <SectionHead kicker={reviewsSection.kicker} heading={reviewsSection.heading} dark />
+  <div class="revbar">
+    <span class="r">{clinic.googleRating}</span>
+    <span class="stars" aria-hidden="true">{stars(5)}</span>
+    <span class="cnt">{reviewsSection.countLine}</span>
+    <a class="lk" href={clinic.reviewsUrl} rel="noopener">{reviewsSection.linkText}</a>
+  </div>
+  <div class="revrail">
+    {
+      reviews.map((review) => (
+        <figure class="rev">
+          <span class="s" aria-label={`${review.stars} out of 5 stars`}>
+            {stars(review.stars)}
+          </span>
+          {/* Stored in full. Clamped visually, so the ellipsis is CSS and the text is never shortened. */}
+          <blockquote>{review.text}</blockquote>
+          <figcaption>
+            <a href={clinic.reviewsUrl} rel="noopener">
+              {review.name}
+            </a>
+          </figcaption>
+        </figure>
+      ))
+    }
+  </div>
+</Section>
+
+<style>
+  .revbar {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    background: var(--white-07);
+    border: 1px solid var(--white-13);
+    border-radius: 9px;
+    padding: 14px 17px;
+    margin-bottom: var(--space-4);
+  }
+  .r {
+    font-family: var(--font-heading);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1;
+  }
+  .stars {
+    color: var(--orange);
+    font-size: 15px;
+    letter-spacing: 2px;
+  }
+  .cnt {
+    font-size: 13.5px;
+    color: var(--on-ink-muted);
+  }
+  .lk {
+    margin-left: auto;
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--orange-light);
+    text-decoration: none;
+  }
+  .revrail {
+    display: flex;
+    gap: 13px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: var(--space-1);
+    scrollbar-width: none;
+  }
+  .revrail::-webkit-scrollbar {
+    display: none;
+  }
+  .rev {
+    flex: 0 0 auto;
+    width: clamp(230px, 74vw, 278px);
+    scroll-snap-align: start;
+    margin: 0;
+    position: relative;
+    background: var(--white-07);
+    border: 1px solid var(--white-13);
+    border-radius: 9px;
+    padding: 15px;
+    font-size: 13.5px;
+    color: var(--on-ink-review);
+    line-height: 1.5;
+  }
+  .s {
+    color: var(--orange);
+    font-size: 12.5px;
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 7px;
+  }
+  blockquote {
+    margin: 0;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 7;
+    line-clamp: 7;
+    overflow: hidden;
+  }
+  figcaption {
+    margin-top: 10px;
+  }
+  figcaption a {
+    display: block;
+    color: var(--white);
+    font-size: 13.5px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  /* The whole card links through to the listing, where the same name appears */
+  figcaption a::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+</style>
