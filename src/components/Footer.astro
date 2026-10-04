@@ -1,12 +1,113 @@
 ---
-import { clinic } from '../data/clinic';
+import { Image } from 'astro:assets';
+import Icon from './Icon.astro';
+import { clinic, addressLines } from '../data/clinic';
+import { social } from '../data/social';
+import { nav } from '../data/nav';
+import { footer, specialities } from '../data/homeCopy';
+import { formatTime } from '../lib/time';
 
 const year = new Date().getFullYear();
+const [morning, evening] = clinic.timings;
+const span = (s: { opens: string; closes: string }) => `${formatTime(s.opens)}–${formatTime(s.closes)}`;
+const hoursLines = [
+  `${footer.hours.monSat} ${span(morning)}`,
+  `${footer.hours.and} ${span(evening)}`,
+  `${footer.hours.sunday} ${span(morning)}`,
+];
+// Specialities are not in the main nav, so they come from the speciality cards
+const pages = nav.filter((item) => !['/skin-and-diabetes/', '/bones-and-joints/'].includes(item.href));
+const contactHeading = nav.find((item) => item.href === '/contact/')!.label;
+const socials = [
+  { name: 'Instagram', icon: 'instagram', href: social.instagram },
+  { name: 'Facebook', icon: 'facebook', href: social.facebook },
+  { name: 'YouTube', icon: 'youtube', href: social.youtube },
+] as const;
 ---
 
 <footer class="site-footer">
-  <div class="inner">
-    <p class="copy">© {year} {clinic.name}, {clinic.town}</p>
+  <div class="fgrid edge">
+    <div class="fcol">
+      <div class="fbrand">
+        <span class="plate"><Image src={clinic.logo} alt="" width={48} height={53} loading="lazy" /></span>
+        <div><b>{clinic.name}</b><small>{clinic.town}</small></div>
+      </div>
+      <p>{footer.tagline}</p>
+      <div class="social">
+        {
+          socials.map((s) => (
+            <a class={s.icon} href={s.href} aria-label={s.name} rel="noopener">
+              <Icon name={s.icon} />
+            </a>
+          ))
+        }
+      </div>
+    </div>
+    <div class="fcol">
+      <h4>{footer.pagesHeading}</h4>
+      <ul>
+        {
+          pages.map((item) => (
+            <li>
+              <a href={item.href}>{item.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div class="fcol">
+      <h4>{footer.specialitiesHeading}</h4>
+      <ul>
+        {
+          specialities.cards.map((card) => (
+            <li>
+              <a href={card.href}>{card.title}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div class="fcol fcon">
+      <h4>{contactHeading}</h4>
+      <div>
+        <Icon name="pin" strokeWidth={1.8} />
+        <address>
+          {
+            addressLines.map((line, i) => (
+              <>
+                {i > 0 && <br />}
+                {line}
+              </>
+            ))
+          }
+        </address>
+      </div>
+      <div>
+        <Icon name="phone" outline strokeWidth={1.8} />
+        <span><a href={`tel:${clinic.phone.tel}`} data-placement="footer"><b>{clinic.phone.display}</b></a></span>
+      </div>
+      <div>
+        <Icon name="mail" strokeWidth={1.8} />
+        <span><a href={`mailto:${clinic.email}`}>{clinic.email}</a></span>
+      </div>
+      <div>
+        <Icon name="clock" strokeWidth={1.8} />
+        <span>
+          {
+            hoursLines.map((line, i) => (
+              <>
+                {i > 0 && <br />}
+                {line}
+              </>
+            ))
+          }
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="fbot edge">
+    <span>© {year} {clinic.name}</span>
+    <span class="r"><a href={footer.privacyHref}>{footer.privacyLink}</a></span>
   </div>
 </footer>
 
@@ -14,15 +115,144 @@ const year = new Date().getFullYear();
   .site-footer {
     background: var(--ink);
     color: var(--on-ink-soft);
-    margin-top: var(--space-8);
   }
-  .inner {
-    max-width: var(--container);
-    margin: 0 auto;
-    padding: var(--space-6) var(--gutter);
+  .fgrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 26px;
+    padding-block: var(--space-6);
   }
-  .copy {
+  @media (min-width: 640px) {
+    .fgrid {
+      grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+    }
+  }
+  h4 {
+    font-family: var(--font-heading);
+    color: var(--white);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin: 0 0 13px;
+  }
+  .fbrand {
+    display: flex;
+    gap: var(--space-3);
+    align-items: flex-start;
+    margin-bottom: 13px;
+  }
+  .plate {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 7px;
+    display: grid;
+    place-items: center;
+    flex: none;
+  }
+  .plate :global(img) {
+    display: block;
+    width: 24px;
+    height: 30px;
+    object-fit: contain;
+  }
+  .fbrand b {
+    font-family: var(--font-heading);
+    color: var(--white);
+    font-size: 17px;
+    font-weight: 700;
+    display: block;
+    line-height: 1.15;
+  }
+  .fbrand small {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--orange-light);
+    display: block;
+    margin-top: 3px;
+  }
+  .fcol p {
+    margin: 0 0 9px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  ul {
+    list-style: none;
     margin: 0;
-    font-size: var(--text-xs);
+    padding: 0;
+  }
+  li {
+    margin-bottom: var(--space-2);
+    font-size: 14px;
+  }
+  .fcol a {
+    color: var(--on-ink-soft);
+    text-decoration: none;
+  }
+  .fcon > div {
+    display: flex;
+    gap: 9px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 1.45;
+  }
+  .fcon :global(svg) {
+    width: 16px;
+    height: 16px;
+    flex: none;
+    margin-top: 2px;
+    color: var(--orange-light);
+  }
+  .fcon b,
+  .fcon .fcon-strong {
+    color: var(--white);
+    font-weight: 700;
+  }
+  .fcon address {
+    font-style: normal;
+  }
+  .social {
+    display: flex;
+    gap: 9px;
+    margin-top: 14px;
+  }
+  .social a {
+    width: 36px;
+    height: 36px;
+    border-radius: 9px;
+    display: grid;
+    place-items: center;
+    text-decoration: none;
+  }
+  .social :global(svg) {
+    width: 19px;
+    height: 19px;
+    color: var(--white);
+  }
+  .social .instagram {
+    background: var(--gradient-instagram);
+  }
+  .social .facebook {
+    background: var(--brand-facebook);
+  }
+  .social .youtube {
+    background: var(--brand-youtube);
+  }
+  .fbot {
+    border-top: 1px solid var(--white-13);
+    padding-block: 15px;
+    display: flex;
+    gap: 10px 20px;
+    flex-wrap: wrap;
+    font-size: 12.5px;
+  }
+  .fbot .r {
+    margin-left: auto;
+  }
+  .fbot a {
+    color: var(--on-ink-soft);
+    text-decoration: none;
   }
 </style>

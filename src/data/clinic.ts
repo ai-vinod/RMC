@@ -24,15 +24,14 @@ export const clinic = {
   established: 1985,
   rebranded: 2015,
 
+  /** The one address, used for the visible text and for schema. Never write it anywhere else. */
   address: {
-    street: '5b, Near Aruna mahal kalayana mandapam, 2, Sangupani Vinayagar Koil St',
-    locality: 'Kanchipuram',
+    street: '5B, Sangupani Vinayagar Koil Street',
+    locality: 'Big Kanchipuram',
     region: 'Tamil Nadu',
     postalCode: '631502',
     country: 'IN',
   },
-  /** The address as it is written on the pages, per content.md. Schema uses address.* above. */
-  addressDisplay: ['5B, Sangupani Vinayagar Koil Street,', 'Big Kanchipuram, Tamil Nadu 631502'],
   geo: { latitude: 12.8380649, longitude: 79.7055714 },
   mapsUrl:
     'https://www.google.com/maps/place/Rani+Multi+Speciality+Clinic+-+Skin,+Diabetic,+Dental,+Bones+%26+Joints,+Orthopaedic+Care+%7C+Kanchipuram,+Tamil+Nadu/@12.8380649,79.7055714,17z/data=!3m1!4b1!4m6!3m5!1s0x3a52c2574e3c75d5:0xfa48903076d3144a!8m2!3d12.8380649!4d79.7055714!16s%2Fg%2F11f3bkkyg2?entry=ttu&g_ep=EgoyMDI2MDkzMC4wIKXMDSoASAFQAw%3D%3D',
@@ -75,5 +74,11 @@ export const clinic = {
   logo: logo as ImageMetadata,
   image: entrance as ImageMetadata,
 };
+
+/** The visible address, assembled from clinic.address: two lines */
+export const addressLines = [
+  `${clinic.address.street},`,
+  `${clinic.address.locality}, ${clinic.address.region} ${clinic.address.postalCode}`,
+];
 
 export const whatsappUrl = `https://wa.me/${clinic.whatsapp.number}?text=${encodeURIComponent(clinic.whatsapp.message)}`;

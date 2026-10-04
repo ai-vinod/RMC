@@ -111,3 +111,13 @@ export const findUs = {
     { label: 'Sunday · Morning', session: 0 },
   ],
 } as const;
+
+export const footer = {
+  tagline: 'Skin and diabetes, bones and joints, and dental care under one roof. Caring for families in Kanchipuram since 1985.',
+  pagesHeading: 'Pages',
+  specialitiesHeading: 'Specialities',
+  privacyLink: 'Privacy policy',
+  privacyHref: '/privacy/',
+  /** Compact hours lines in the contact column, taken from the approved design. Not yet in content.md's microcopy table. */
+  hours: { monSat: 'Mon–Sat', and: 'and', sunday: 'Sunday' },
+} as const;

@@ -40,6 +40,7 @@ Approved 1 Oct 2026. Five-page static website plus a blog for Rani Multi Special
 | Domain name | www.raniclinickanchi.com. The www host is canonical; non-www 301s to it, and every URL ends in a trailing slash. Settled 4 Oct |
 | Enquiry email | info@raniclinickanchi.com, on the clinic's own domain rather than a Gmail address. Settled 4 Oct. The mailbox still has to be created in Hostinger before the address goes on a live page |
 | Holding page | Single page live on the domain: doctors, timings, address, phone, open-now status, clinic schema. Replaced at launch |
+| Address | 5B, Sangupani Vinayagar Koil Street, Big Kanchipuram, Tamil Nadu 631502. Settled 5 Oct as the one address — visible on the page, held in clinic.ts, fed to the schema from there. The Google Business Profile currently holds a messier string with a landmark in the street field and no locality, region or postcode, which cannot produce valid PostalAddress schema. The listing gets corrected to match the site, not the other way round. The landmark is not lost: it is the directions note under the address |
 | Phone | 99453 89639 |
 | Timings | Morning 10.30am–1.30pm every day including Sunday. Evening 6.30–8.30pm, Monday to Saturday only |
 | Ortho availability | In clinic one Sunday a month, date not fixed in advance. Video consultations on other days. Both bookable |
@@ -102,7 +103,7 @@ Ordered the way a patient decides: what you do, who does it, whether others trus
 7. **Why patients choose Rani Multi Speciality Clinic** — three numbered reasons
 8. **Patient stories** — a horizontal rail of 9:16 vertical video cards, three to six of them, opening in a lightbox. Confirmed in at launch on 4 Oct — the doctor approved the section
 9. **Google reviews** — charcoal band. Rating bar, five hand-picked reviews on a rail, link to the full listing
-10. **Blog** — three most recent articles with category tags
+10. **Blog** — three most recent articles with category tags. The whole section is hidden when the collection is empty — decided 5 Oct. A heading with an empty state under it says the clinic abandoned something, which is worse than the section not being there, and placeholder cards are fake content on a medical site. It also has to survive one or two posts without looking broken, because two go live at launch, not three. The three article titles in the approved design are mock content and never ship as cards
 11. **Find us** — address, directions note, map button, timings panel
 12. **Footer** — brand and tagline, page links, specialities, contact block, social icons, copyright
 
@@ -373,6 +374,7 @@ Everything that needs doing, in the order it needs doing. Tick off anything alre
 - [ ] Leave Google Ads pointing at the Maps listing until the real site is live. Switching a working destination to a holding page for ten days risks what already works and teaches nothing
 - [ ] Correct the proposal line promising reviews "pulled live from Google" that "refresh on their own". The site hardcodes five hand-picked ones. Fix the wording before the proposal goes out, not after
 - [ ] Create the info@raniclinickanchi.com mailbox in Hostinger, before the address goes on any live page
+- [ ] Correct the address on the Google Business Profile to match the site: 5B, Sangupani Vinayagar Koil Street, Big Kanchipuram, Tamil Nadu 631502. The listing currently has a landmark inside the street field and no locality, region or postcode. Do it in the same pass as the listing name
 
 ### Content still needed before the build
 
@@ -402,6 +404,8 @@ Everything that needs doing, in the order it needs doing. Tick off anything alre
 - [ ] Contact form wired and a test enquiry actually received
 - [ ] Pre-launch review with Daniel, including the DNS cutover
 - [ ] **Launch blocker.** Two of the five reviews in reviews.ts contain cure language — "completely cured" and "painfree". Replace both with reviews free of cure or outcome claims before the site goes live. Decided 4 Oct to build with them in place, since building publishes nothing; the swap is a data edit to reviews.ts, not a rebuild. A quoted review is never reworded, so the fix is choosing different ones
+- [ ] **Launch blocker.** Written confirmation from Dr. Madhavan that he has chosen to publish patient video testimonials. Raised when the videos went back in on 4 Oct and still not obtained. The section is built and the videos are in the data file, so nothing stops this going live by accident — which is exactly why it needs ticking before launch, not after
+- [ ] Open each patient video in a normal browser on a real phone and confirm the embed plays. The browser pane could not verify this; Instagram embeds fail often enough that it has to be checked on the real thing
 
 ### At launch
 

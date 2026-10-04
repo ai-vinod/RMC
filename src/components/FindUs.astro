@@ -1,14 +1,10 @@
 ---
 import Section from './Section.astro';
 import SectionHead from './SectionHead.astro';
-import { clinic } from '../data/clinic';
+import { clinic, addressLines } from '../data/clinic';
 import { findUs } from '../data/homeCopy';
-import { formatTime } from '../lib/time';
+import { timingRows as rows } from '../lib/timings';
 
-const rows = findUs.timingRows.map((row) => {
-  const session = clinic.timings[row.session];
-  return { label: row.label, hours: `${formatTime(session.opens)} – ${formatTime(session.closes)}` };
-});
 ---
 
 <Section tone="cream">
@@ -17,7 +13,7 @@ const rows = findUs.timingRows.map((row) => {
     <div>
       <address>
         {
-          clinic.addressDisplay.map((line, i) => (
+          addressLines.map((line, i) => (
             <>
               {i > 0 && <br />}
               {line}
