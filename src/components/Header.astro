@@ -1,89 +1,136 @@
 ---
+import Icon from './Icon.astro';
 import { clinic } from '../data/clinic';
+import { nav, callLabel } from '../data/nav';
 import { imageUrl } from '../lib/images';
+
+const path = Astro.url.pathname;
 ---
 
-<header class="site-header">
-  <div class="top">
+<header class="top edge">
     <a class="brand" href="/">
-      <span class="plate"><img src={imageUrl(clinic.logo)} alt="" width="36" height="40" /></span>
-      <span class="name">{clinic.name}</span>
+      <span class="plate"><img src={imageUrl(clinic.logo)} alt="" width="26" height="32" /></span>
+      <span>
+        <span class="nm">{clinic.name}</span>
+        <span class="loc">{clinic.town}</span>
+      </span>
     </a>
-    <a class="call" href={`tel:${clinic.phone.tel}`} data-placement="header">
-      <small>Call Now</small>
-      <b>{clinic.phone.display}</b>
+    <a class="tel" href={`tel:${clinic.phone.tel}`} data-placement="header">
+      <Icon name="phone" />
+      <span><small>{callLabel}</small><b>{clinic.phone.display}</b></span>
     </a>
-  </div>
-  <nav class="navband" aria-label="Main"></nav>
 </header>
+<nav class="nav edge" aria-label="Main">
+    {
+      nav.map((item) => (
+        <a href={item.href} aria-current={path === item.href ? 'page' : undefined}>
+          {item.label}
+        </a>
+      ))
+    }
+</nav>
 
 <style>
-  .site-header {
-    background: var(--white);
+  .top {
     position: sticky;
     top: 0;
     z-index: 50;
-  }
-  .top {
+    background: var(--white);
     display: flex;
     align-items: center;
-    gap: var(--space-3);
-    padding: var(--space-4) var(--gutter);
-    max-width: var(--container);
-    margin: 0 auto;
+    gap: 13px;
+    padding-block: 15px;
   }
   .brand {
     display: flex;
     align-items: center;
-    gap: var(--space-3);
+    gap: 13px;
     color: inherit;
     text-decoration: none;
+    min-width: 0;
   }
   .plate {
     background: var(--ink);
-    border-radius: var(--radius-sm);
+    border-radius: 8px;
     padding: 7px;
     display: grid;
     place-items: center;
+    flex: none;
   }
   .plate img {
     display: block;
-    width: auto;
-    height: 40px;
+    width: 26px;
+    height: 32px;
+    object-fit: contain;
   }
-  .name {
+  .nm {
+    display: block;
     font-family: var(--font-heading);
     font-weight: 700;
     font-size: 18px;
     line-height: 1.1;
   }
-  .call {
+  .loc {
+    display: block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--orange-text);
+    margin: 3px 0 0;
+  }
+  .tel {
     margin-left: auto;
-    min-height: var(--tap-target);
     display: inline-flex;
-    flex-direction: column;
-    justify-content: center;
+    align-items: center;
+    gap: 10px;
     background: var(--ink);
     color: var(--white);
-    padding: var(--space-2) var(--space-4);
-    border-radius: var(--radius-sm);
+    padding: 9px 16px 9px 13px;
+    border-radius: 7px;
     text-decoration: none;
+    box-shadow: var(--shadow-call);
+    flex: none;
   }
-  .call small {
+  .tel :global(svg) {
+    width: 20px;
+    height: 20px;
+    flex: none;
+  }
+  .tel small {
+    display: block;
     font-size: 9px;
     font-weight: 700;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     opacity: 0.75;
   }
-  .call b {
+  .tel b {
+    display: block;
     font-family: var(--font-heading);
     font-size: 20px;
+    font-weight: 700;
     font-variant-numeric: tabular-nums;
     line-height: 1.05;
   }
-  .navband {
+
+  .nav {
     background: var(--gradient-orange);
-    min-height: 40px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .nav a {
+    padding: 11px 0;
+    margin-right: 22px;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--nav-ink);
+    text-decoration: none;
+    border-bottom: 3px solid transparent;
+  }
+  .nav a[aria-current='page'] {
+    border-bottom-color: var(--nav-ink);
   }
 </style>

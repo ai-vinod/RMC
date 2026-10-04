@@ -45,3 +45,8 @@ h3 {
 address {
   font-style: normal;
 }
+
+/* Centres content to the container width while letting backgrounds run full width. */
+.edge {
+  padding-inline: max(var(--gutter), calc((100% - var(--container)) / 2 + var(--gutter)));
+}
