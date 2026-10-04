@@ -1,0 +1,42 @@
+---
+import Section from './Section.astro';
+import SectionHead from './SectionHead.astro';
+import { about } from '../data/aboutCopy';
+---
+
+<Section tone="white">
+  <SectionHead level="h1" heading={about.headline} />
+  <div class="prose">
+    {about.story.map((p) => <p>{p}</p>)}
+  </div>
+  <h2>{about.facilitiesHeading}</h2>
+  <div class="rule"></div>
+  <div class="prose">
+    {about.facilities.map((p) => <p>{p}</p>)}
+  </div>
+</Section>
+
+<style>
+  .prose {
+    max-width: 62ch;
+  }
+  .prose :global(p) {
+    margin: 0 0 var(--space-4);
+    font-size: var(--text-base);
+    line-height: 1.6;
+  }
+  h2 {
+    font-family: var(--font-heading);
+    font-size: var(--text-h2);
+    font-weight: 700;
+    margin: var(--space-6) 0 4px;
+    line-height: var(--leading-heading);
+  }
+  .rule {
+    width: var(--rule-width);
+    height: var(--rule-height);
+    background: var(--gradient-orange);
+    border-radius: 2px;
+    margin: 0 0 22px;
+  }
+</style>

@@ -164,10 +164,10 @@ Open the clinic's Google listing, pick five good ones, and type them in. Use the
 
 | # | Reviewer's first name | Review text | Stars |
 | --- | --- | --- | --- |
-| 1 | Vijay Ganesh | My name is vijayganesh 44 years ,I was suffering from lower back ache and left limb pain since 5 months, dr madhavan sir ortho in kanchipuram rani multi speciality clinic -the knee clinic , he listened to me to all my complaints and examined me thoroughly then he examined every thing clearly to my understanding what's happening in my back and why the pain is coming , iam so impressed with sir explanation and dedication on patient care now iam 95 ,% better and able to do m routine activities ,thanks to dr madhavan sir ortho at rani multi speciality , i recommend people suffering from ortho issues to dr madhavan sir qualified ortho doctor | 5 stars |
-| 2 | Deepika Kumaresan | I have been there once for my esthetic correction of my teeth.. Dr.sudharsan and Dr niranjani explained me very well about the treatment protocol... I will strongly recommend ppl in kpm to go in there for different modalities of treatment. | 5 stars |
-| 3 | Anbarasu Arjunan | I was dealing with persistent ortho bone issues, multiple joint pains for long time, but dr madhavan sir got right to the root of the problem, he took time to explain and diagnosis clearly and answered all my question and doubts, precriped medicine it worked woundefuly, and i feel completly cured and iam greatful for the tretment and kindness of dr madhavan, he so approchable and final solutions for ortho problem now iam living a painfree life | 5 stars |
-| 4 | Sivagami | I consulted Dr. Paramanantham Madhavan (Ortho) for my condition. First i have to mention about his positive energy and the assurance he gave to me. He explained the treatment clearly and did the follow up promptly. | 5 stars |
+| 1 | Vijay Ganesh | My name is vijayganesh 44 years ,I was suffering from lower back ache and left limb pain since 5 months, dr madhavan sir ortho in kanchipuram rani multi speciality clinic -the knee clinic , he listened to me to all my complaints and examined me thoroughly then he examined every thing clearly to my understanding what's happening in my back and why the pain is coming , iam so impressed with sir explanation and dedication on patient care now iam 95 ,% better and able to do my routine activities ,thanks to dr madhavan sir ortho at rani multi speciality , i recommend people suffering from ortho issues to dr madhavan sir qualified ortho doctor | 5 stars |
+| 2 | Deepika Kumaresan | I have been there once for my asthetic correction of my teeth.. Dr.sudharsan and Dr niranjani explained me very well about the treatment protocol... I will strongly recommend ppl in kanchipuram to go in there for different modalities of treatment. | 5 stars |
+| 3 | Anbarasu Arjunan | I was dealing with persistent ortho bone issues, multiple joint pains for long time, but Dr madhavan sir got right to the root of the problem, he took time to explain and diagnosis clearly and answered all my question and doubts, prescribed medicine it worked wounderfully, and i'm greatful for the treatment and kindness of Dr madhavan, he's so approachable and final solutions for ortho problem now i am living a comfortable life | 5 stars |
+| 4 | Sivagami | I consulted Dr. P Madhavan (Ortho) for my condition. First i have to mention about his positive energy and the assurance he gave to me. He explained the treatment clearly and did the follow up promptly. | 5 stars |
 | 5 | Kpm Ranjith | My grand mother had 10 years knee pain , eating pain killers for 10 years , she went to many treatment but not relieved from pain , finally one of my relatives suggested dr madhavan who got surgery in her knees (TKR SURGERY) 1 year back and she suggested so we went and dr madhavan sir explained us the condition well and suggested for TKR surgery for knee arthritis , now 1 month over my grand mother walking without knee pain and thanks to dr madhavan THE KNEE CLINIC ,for ortho related problem a complete end point ☝️, especially for knee problems and knee pain | 5 stars |
 
 **2. The link behind "Read all reviews on Google"**
@@ -385,6 +385,72 @@ Shortest page on the site. Most of it is data already in hand.
 **Already settled, nothing to write:** address, phone, clinic timings, map.
 
 **Both settled 4 Oct.** The enquiry email is info@raniclinickanchi.com — the clinic's own domain, not a Gmail address. It goes in the footer and on Contact. 99453 89639 is confirmed on WhatsApp, so the WhatsApp buttons can go live.
+
+## About page — draft copy
+
+Drafted 5 Oct. Everything here is built from facts already confirmed by the clinic — 1985, the 2015 rename, the four doctors and their credentials, the address, the timings. Nothing is invented. Where something needs the doctors, it is marked **GAP** and left empty rather than filled with a guess.
+
+**Page title** (54 characters)
+
+> About Our Clinic | Rani Clinic, Kanchipuram Since 1985
+
+**Meta description** (138 characters)
+
+> Four qualified doctors across skin, diabetes, bones, joints and dental care — two generations of the same family in Kanchipuram since 1985.
+
+**Headline — pick one.** It replaces the "About" stand-in. None of these repeat the homepage hero, which already carries *Caring for Kanchipuram Since 1985*.
+
+**Chosen 5 Oct — option A:**
+
+> Four doctors, one clinic, since 1985
+
+It carries the two facts that matter and it is the only one that says *four doctors*, which is what a patient weighing up a small clinic wants to know. B and C are kept here in case A reads badly on the built page: *Two generations, three specialities, one address* and *A family practice in Kanchipuram since 1985*.
+
+### The clinic's story
+
+> Rani Multi Speciality Clinic has been treating families in Kanchipuram since 1985. It took its present name in 2015, by which time the practice covered three specialities rather than one.
+>
+> Four qualified doctors see patients here. Dr. Paramanantham, who has practised for forty years, consults in dermatology and diabetes. Dr. P Madhavan is an orthopaedic surgeon. Dr. P. Sudharsan and Dr. Niranjani look after the dental side. Two generations of the same family, each working in their own field.
+
+**GAP — one paragraph, needs Dr. Madhavan.** How the clinic began in 1985, who opened it, and how it came to cover three specialities. Two or three sentences is plenty. This is the paragraph that makes the page worth reading; everything above it is facts anyone could list from the homepage.
+
+### Facilities
+
+> The clinic is on Sangupani Vinayagar Koil Street in Big Kanchipuram, beside Aruna Mahal Kalyana Mandapam. Inside there are separate consulting rooms for dermatology, orthopaedics and dentistry, with a waiting area at the front.
+>
+> Morning consultations run every day including Sunday, 10.30 am to 1.30 pm. Evening consultations run Monday to Saturday, 6.30 pm to 8.30 pm.
+
+**GAP — needs Dr. Madhavan.** Anything about the facilities worth naming: equipment the clinic has invested in, how many consulting rooms, anything patients notice. Without it this section says little more than "there are rooms", which is not worth a heading.
+
+### Doctor bios
+
+The credential line under each name is already confirmed and appears on the cards. What is missing is the human part — two or three sentences each. When the answers arrive they drop straight into the gaps below and the page is done.
+
+| Doctor | Confirmed line | What is still needed |
+| --- | --- | --- |
+| Dr. Paramanantham | MBBS, DD, Dip. in Diabetes Medicine · Dermatologist and diabetologist · 40 years of experience | **GAP** — where he trained, what he sees most often, why dermatology |
+| Dr. P Madhavan | MBBS, MS (Ortho), FIJR, FIRJR · Trauma and joint replacement surgeon | **GAP** — where he trained, what he sees most often, and the answer on where robotic procedures take place |
+| Dr. P. Sudharsan | BDS, MDS (Conservative & Endodontic Dentistry) · Consultant endodontist — root canal treatment | **GAP** — where he trained, what he sees most often |
+| Dr. Niranjani | BDS, FICD, FIC (IMP) · Consultant cosmetologist and implantologist | **GAP** — where she trained, what she sees most often |
+
+Keep each bio to two or three sentences. No superlatives, no outcome claims, no "one of the best in Tamil Nadu" — if a doctor sends a line like that, it gets trimmed before it goes on the page.
+
+### Photo captions
+
+Drafted from the photographs already supplied. Each one still needs checking for branded standees carrying superlative claims before it is used.
+
+| Photo | Caption |
+| --- | --- |
+| Entrance | The clinic entrance on Sangupani Vinayagar Koil Street |
+| Waiting area | The waiting area at the front of the clinic |
+| Dermatology room | The dermatology and diabetes consulting room |
+| Ortho doctor room | Dr. Madhavan's consulting room |
+| Dental | The dental treatment room |
+| Corridor | Inside the clinic |
+
+**Not used:** the photograph of the wall posters outside Dr. Madhavan's room. Posters usually carry claims the site cannot make, and a photograph of a claim is still the claim. Check it before deciding.
+
+**Gallery stays off the page until these captions are approved and the final photo selection is made.**
 
 ## The first two articles
 

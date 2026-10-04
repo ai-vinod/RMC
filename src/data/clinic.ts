@@ -26,6 +26,8 @@ export const clinic = {
 
   /** The one address, used for the visible text and for schema. Never write it anywhere else. */
   address: {
+    /** The street on its own, for prose. `street` below is what goes in the address. */
+    streetName: 'Sangupani Vinayagar Koil Street',
     street: '5B, Sangupani Vinayagar Koil Street',
     locality: 'Big Kanchipuram',
     region: 'Tamil Nadu',
