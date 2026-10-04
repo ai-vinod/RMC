@@ -5,18 +5,24 @@ import SectionHead from './SectionHead.astro';
 import { doctors } from '../data/doctors';
 import { doctorsSection } from '../data/homeCopy';
 
+interface Props {
+  /** The About page version: bigger photos and an anchor on every card */
+  large?: boolean;
+}
+const { large = false } = Astro.props;
+
 // Initial for a doctor with no photo yet: first letter of the surname
 const initial = (name: string) => name.trim().split(/\s+/).pop()!.charAt(0).toUpperCase();
 ---
 
 <Section tone="cream">
   <SectionHead kicker={doctorsSection.kicker} heading={doctorsSection.heading} />
-  <div class="docs">
+  <div class:list={['docs', { large }]}>
     {
       doctors.map((doc) => (
-        <div class="doc">
+        <div class="doc" id={large ? doc.id : undefined}>
           {doc.photo ? (
-            <Image class="av" src={doc.photo} alt={`Photo of ${doc.name}`} width={112} height={112} fit="cover" position="top" loading="lazy" />
+            <Image class="av" src={doc.photo} alt={`Photo of ${doc.name}`} width={large ? 192 : 112} height={large ? 192 : 112} fit="cover" position="top" loading="lazy" />
           ) : (
             <div class="av ph" aria-hidden="true">
               {initial(doc.name)}
@@ -63,6 +69,26 @@ const initial = (name: string) => name.trim().split(/\s+/).pop()!.charAt(0).toUp
     border: 3px solid var(--cream-deep);
     object-fit: cover;
     object-position: center top;
+  }
+  .large .doc {
+    scroll-margin-top: 90px;
+    padding: 20px;
+  }
+  .large .av {
+    width: 96px;
+    height: 96px;
+  }
+  .large .ph {
+    font-size: 36px;
+  }
+  .large h3 {
+    font-size: 22px;
+  }
+  .large .ql {
+    font-size: var(--text-sm);
+  }
+  .large .rl {
+    font-size: var(--text-sm);
   }
   .ph {
     background: var(--gradient-orange);

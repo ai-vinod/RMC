@@ -1,16 +1,19 @@
 ---
 interface Props {
-  kicker: string;
+  kicker?: string;
   heading: string;
+  /** The page title uses h1, everything else h2 */
+  level?: 'h1' | 'h2';
   /** Kicker colour on a charcoal band */
   dark?: boolean;
 }
 
-const { kicker, heading, dark = false } = Astro.props;
+const { kicker, heading, level = 'h2', dark = false } = Astro.props;
+const Heading = level;
 ---
 
-<p class:list={['kicker', { dark }]}>{kicker}</p>
-<h2>{heading}</h2>
+{kicker && <p class:list={['kicker', { dark }]}>{kicker}</p>}
+<Heading>{heading}</Heading>
 <div class="rule"></div>
 
 <style>
@@ -25,6 +28,7 @@ const { kicker, heading, dark = false } = Astro.props;
   .kicker.dark {
     color: var(--orange-light);
   }
+  h1,
   h2 {
     font-family: var(--font-heading);
     font-size: var(--text-h2);

@@ -1,6 +1,25 @@
 ---
 import Base from '../layouts/Base.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import Section from '../components/Section.astro';
+import SectionHead from '../components/SectionHead.astro';
+import DoctorCards from '../components/DoctorCards.astro';
+import Schema from '../components/Schema.astro';
+import { nav } from '../data/nav';
+import { breadcrumbNode, physicianNodes } from '../lib/schema';
+
+const home = nav.find((item) => item.href === '/')!;
+const about = nav.find((item) => item.href === '/about/')!;
+const nodes = [...(await physicianNodes(Astro.site!)), breadcrumbNode(Astro.site!, [{ name: home.label, path: home.href }, { name: about.label }])];
 ---
 
-<Base title="About | Rani Multi Speciality Clinic">
+<!-- Stub title, no description and noindex until the About copy is approved -->
+<Base title="About | Rani Multi Speciality Clinic" noindex>
+  <Schema slot="head" nodes={nodes} />
+  <Breadcrumb trail={[{ label: home.label, href: home.href }, { label: about.label }]} />
+  <Section tone="white">
+    <!-- Stand-in H1 until the approved headline arrives -->
+    <SectionHead level="h1" heading={about.label} />
+  </Section>
+  <DoctorCards large />
 </Base>
