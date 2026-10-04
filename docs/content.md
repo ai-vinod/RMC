@@ -257,6 +257,10 @@ All three are worked out in Indian time from clinic.timings. The chip is hidden 
 
 **Video fallback link — added 5 Oct.** Instagram and YouTube embeds refuse to play often enough to plan for: a private account, a login wall, a region block, an app-only video. A visitor who taps a patient story and gets an empty black frame has been failed twice over. Beneath the player, always visible, never only on error: **Watch on Instagram ↗** or **Watch on YouTube ↗**, matching whichever platform that video's link points at.
 
+**Blog section link — added 5 Oct.** The design has no link out of the blog teasers, which leaves the nav as the only route to `/blog/`. Beneath the three cards: **See all articles →**, matching the arrow pattern used by *See treatments →* and *Read all reviews on Google →*. It appears only when the section does, so it is hidden with everything else while the collection is empty.
+
+**Blog categories are a fixed set:** Skin, Diabetes, Orthopaedics, Dental. Required on every post, enforced in the collection schema. Free text would give four spellings of "dermatology" by the third month, and at four articles a month these tags become how the blog is navigated.
+
 ## Skin & Diabetes page
 
 The lead page. Dr. Paramanantham is the clinic's main draw and the only specialist consulting in person right now, so this one gets the deepest content and the first pass of effort.

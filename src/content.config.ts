@@ -10,8 +10,8 @@ const blog = defineCollection({
     description: z.string().min(1),
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
-    /** Shown as the tag on the homepage card */
-    category: z.string().optional(),
+    /** The tag on blog cards. A fixed set, so a typo fails the build instead of making a fifth spelling of "dermatology". */
+    category: z.enum(['Skin', 'Diabetes', 'Orthopaedics', 'Dental']),
   }),
 });
 

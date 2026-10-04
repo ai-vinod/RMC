@@ -94,4 +94,20 @@ export const reviewsSection = {
 export const blogSection = {
   kicker: 'From the clinic',
   heading: 'Health advice from our doctors',
+  linkText: 'See all articles →',
+} as const;
+
+export const findUs = {
+  kicker: 'Visit us',
+  heading: 'Find us in Kanchipuram',
+  directions: 'Look for Aruna Mahal Kalyana Mandapam on Sangupani Vinayagar Koil Street — the clinic is right beside it.',
+  mapButton: 'Open in Google Maps',
+  /** Heading of the timings panel; same words as the hero's "Clinic timings" button */
+  timingsHeading: 'Clinic timings',
+  /** Row labels; each takes its hours from clinic.timings[session] */
+  timingRows: [
+    { label: 'Mon – Sat · Morning', session: 0 },
+    { label: 'Mon – Sat · Evening', session: 1 },
+    { label: 'Sunday · Morning', session: 0 },
+  ],
 } as const;

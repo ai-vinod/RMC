@@ -1,0 +1,112 @@
+---
+import Section from './Section.astro';
+import SectionHead from './SectionHead.astro';
+import { clinic } from '../data/clinic';
+import { findUs } from '../data/homeCopy';
+import { formatTime } from '../lib/time';
+
+const rows = findUs.timingRows.map((row) => {
+  const session = clinic.timings[row.session];
+  return { label: row.label, hours: `${formatTime(session.opens)} – ${formatTime(session.closes)}` };
+});
+---
+
+<Section tone="cream">
+  <SectionHead kicker={findUs.kicker} heading={findUs.heading} />
+  <div class="findgrid">
+    <div>
+      <address>
+        {
+          clinic.addressDisplay.map((line, i) => (
+            <>
+              {i > 0 && <br />}
+              {line}
+            </>
+          ))
+        }
+      </address>
+      <p class="dirn">{findUs.directions}</p>
+      <a class="mapbtn" href={clinic.mapsUrl} rel="noopener">{findUs.mapButton}</a>
+    </div>
+    <div class="hrs" id="timings">
+      <div class="hh">{findUs.timingsHeading}</div>
+      {
+        rows.map((row) => (
+          <div class="r">
+            <b>{row.label}</b>
+            <span>{row.hours}</span>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</Section>
+
+<style>
+  .findgrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  @media (min-width: 640px) {
+    .findgrid {
+      grid-template-columns: 1.05fr 1fr;
+    }
+  }
+  address {
+    font-size: var(--text-base);
+    line-height: 1.6;
+    margin: 0 0 10px;
+  }
+  .dirn {
+    font-size: var(--text-sm);
+    color: var(--ink-secondary);
+    margin: 0 0 15px;
+    max-width: 40ch;
+  }
+  .mapbtn {
+    display: inline-block;
+    padding: 12px 20px;
+    background: var(--ink);
+    color: var(--white);
+    border-radius: var(--radius-sm);
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+  }
+  .hrs {
+    background: var(--white);
+    border: 1px solid var(--cream-deep);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    /* The hero's "Clinic timings" button lands here, clear of the sticky top bar */
+    scroll-margin-top: 90px;
+  }
+  .hh {
+    background: var(--gradient-orange);
+    padding: 11px var(--space-4);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--on-orange);
+  }
+  .r {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 11px var(--space-4);
+    font-size: var(--text-sm);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .r:last-child {
+    border-bottom: 0;
+  }
+  b {
+    font-weight: 700;
+  }
+  span {
+    color: var(--ink-secondary);
+    font-variant-numeric: tabular-nums;
+  }
+</style>
