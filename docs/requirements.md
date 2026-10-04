@@ -253,7 +253,7 @@ rani-clinic/
 
 **TypeScript, not JSON, for the data files** — settled 4 Oct, matching seo-brief.md. A `.ts` file is typed and imported directly by the components, so a missing phone number or a misspelt key fails the build. The same mistake in a `.json` file renders `undefined` onto a live page and nobody notices for a month.
 
-**Photographs live in `src/assets/images/`, not `public/images/`** — corrected 4 Oct. Astro's image pipeline only processes what sits under `src/`; anything in `public/` is copied to the server untouched, at whatever size it arrived. That matters here because the clinic photos are phone originals at several megabytes, and the logo is a 1197×1314 PNG displayed at 26×32. The data files hold imports rather than path strings, and Astro emits resized WebP with a hashed filename.
+**Photographs live in `src/assets/images/`, not `public/images/`** — corrected 4 Oct. Astro's image pipeline only processes what sits under `src/`; anything in `public/` is copied to the server untouched, at whatever size it arrived. Measured 4 Oct: the logo was a 597 kB PNG at 1197×1314 displayed at 26×32, and comes out of the pipeline at 2 kB. The clinic entrance photo went from 671 kB to 149 kB. The two doctor photos were already small, 28 kB and 70 kB. The claim that these were "several MB each" was wrong — the saving is real but it sits in the logo and the clinic gallery, not the headshots. The data files hold imports rather than path strings, and Astro emits resized WebP with a hashed filename.
 
 **Two things stay in `public/`:** `favicon.svg`, because it is referenced at a fixed path the pipeline cannot rewrite, and the fonts. Everything else that is an image moves.
 

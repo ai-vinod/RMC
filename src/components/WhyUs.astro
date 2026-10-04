@@ -1,0 +1,66 @@
+---
+import Section from './Section.astro';
+import SectionHead from './SectionHead.astro';
+import { whyUs } from '../data/homeCopy';
+---
+
+<Section tone="white">
+  <SectionHead kicker={whyUs.kicker} heading={whyUs.heading} />
+  <ol class="why">
+    {
+      whyUs.reasons.map((reason, i) => (
+        <li>
+          <div class="n" aria-hidden="true">
+            {String(i + 1).padStart(2, '0')}
+          </div>
+          <b>{reason.title}</b>
+          <p>{reason.text}</p>
+        </li>
+      ))
+    }
+  </ol>
+</Section>
+
+<style>
+  .why {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+  @media (min-width: 640px) {
+    .why {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  li {
+    background: var(--white);
+    border-radius: var(--radius-md);
+    padding: 19px;
+    border: 1px solid var(--cream-deep);
+  }
+  .n {
+    font-family: var(--font-heading);
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--orange);
+    line-height: 1;
+    margin-bottom: var(--space-2);
+  }
+  b {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 5px;
+    line-height: 1.2;
+  }
+  p {
+    margin: 0;
+    font-size: var(--text-sm);
+    color: var(--ink-secondary);
+    line-height: 1.45;
+  }
+</style>

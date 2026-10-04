@@ -100,9 +100,9 @@ Magic Remedies Act 1954. These are not style preferences.
   Check with `document.documentElement.scrollWidth > window.innerWidth` — it must be false.
 - **Every photograph lives in `src/assets/images/` and goes through Astro's image pipeline**
   (`astro:assets`). Astro only processes what sits under `src/` — anything in `public/` is
-  copied to the server untouched, at whatever size it arrived. The clinic photos are phone
-  originals at several MB each; unoptimised they cost more Lighthouse points than everything
-  else on this list combined. Width, height and `loading="lazy"` below the fold.
+  copied to the server untouched, at whatever size it arrived. Measured: the logo went
+  597 kB → 2 kB, the clinic entrance photo 671 kB → 149 kB. The saving lives in the logo and
+  the clinic gallery, not the headshots. Width, height and `loading="lazy"` below the fold.
   `favicon.svg` and the fonts stay in `public/`; every image moves.
 - Schema needs absolute image URLs, and an import gives a relative one. `Schema.astro` wraps
   each: `new URL(photo.src, Astro.site).href`.

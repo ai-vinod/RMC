@@ -61,3 +61,14 @@ export const doctorsSection = {
   /** The small label above each name, matching the speciality card titles */
   fieldLabels: { skin: 'Skin & Diabetes', ortho: 'Bones & Joints', dental: 'Dental' },
 } as const;
+
+export const whyUs = {
+  kicker: 'Why patients come to us',
+  heading: 'Why patients choose Rani Multi Speciality Clinic',
+  // The three reasons settled 4 Oct, from requirements.md (Homepage layout). content.md's "Final copy" block still has the first set.
+  reasons: [
+    { title: 'Here since 1985', text: 'Two generations of the same family treating patients in Kanchipuram.' },
+    { title: 'Three specialities, one visit', text: 'Skin, bones and teeth under one roof, without being sent elsewhere.' },
+    { title: 'Specialist-led care', text: 'Each doctor practises in one field rather than general medicine.' },
+  ],
+} as const;
