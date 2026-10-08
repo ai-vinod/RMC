@@ -55,9 +55,11 @@ Magic Remedies Act 1954. These are not style preferences.
 - No superlatives: best, No. 1, leading, trusted, world-class, centre of excellence, painless,
   advanced.
 - No cure claims, no guaranteed outcomes, no recovery timelines.
-- **No page may imply the clinic performs robotic surgery.** Dr. Madhavan trained in robotic
-  joint replacement. Training is not equipment. Where the procedures actually happen is still
-  an open question in `requirements.md`.
+- **No page may imply the clinic performs surgery of any kind on site.** Confirmed 8 Oct:
+  small procedures happen at the clinic (pain blocks, slabs, casts, injections); larger
+  surgery happens at partner hospitals chosen with the patient — non-robotic in Kanchipuram,
+  robotic joint replacement in Chennai. Say this plainly where it's relevant rather than
+  leaving it vague. Never name the partner hospitals.
 - No device or drug brand names, no before-and-after images, no patient faces without release.
 - Never invent a clinical specific — recovery times, session counts, protocols, prices.
   Leave a blank and flag it for the doctor.

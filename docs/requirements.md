@@ -46,6 +46,8 @@ Approved 1 Oct 2026. Five-page static website plus a blog for Rani Multi Special
 | Ortho availability | In clinic one Sunday a month, date not fixed in advance. Video consultations on other days. Both bookable |
 | Google Business Profile | 4.6 rating, live |
 | Instagram | 76 posts, 60 followers, dormant. Also the source for testimonial videos |
+| Facilities | Three consulting rooms, an on-site lab and an on-site pharmacy. Confirmed 8 Oct. The lab and pharmacy are the useful part — tests and medicines without a second trip is a real patient benefit and no competitor claim is needed to say it. The clinic also described "high tech" dental and ortho instrumentation and a "clean and neat environment"; neither is usable as written, being unverifiable and something every clinic claims |
+| Where surgery happens | Small procedures at the clinic (pain blocks, slabs, casts, injections). Larger surgery at partner hospitals chosen with the patient: non-robotic in Kanchipuram, robotic in Chennai. Confirmed 8 Oct. Partner hospitals are not named without their permission |
 | Timeline | 4 weeks from receiving content |
 
 Clinic history, confirmed 4 Oct: the practice has run since **1985** and was rebranded as Rani Multi Speciality Clinic in **2015**. Dr. Paramanantham's forty years of experience sits alongside that. "Caring for Kanchipuram since 1985" is checkable, unmatched locally, and the strongest line available for the site.
@@ -67,7 +69,9 @@ As supplied by the clinic 1 Oct. Use these spellings and credential strings exac
 
 **Display name settled 4 Oct: "Dr. P Madhavan".** Use that form everywhere — the doctors table above, page titles, meta descriptions, body copy and schema. His father, the dermatologist, shares the first name and sits directly above him on the About page, which is why the short form was chosen. The full form "Dr. Paramanantham Madhavan" is not used on the site.
 
-**On "robotic joint replacement".** That is his training and title, which is not the same as the Kanchipuram clinic having the equipment. He almost certainly operates at a larger hospital. Confirm where those procedures actually happen before any page or article implies the clinic performs them.
+**The family, confirmed 8 Oct.** Dr. Paramanantham founded the clinic and is the father. Dr. P Madhavan (orthopaedics) and Dr. P. Sudharsan (dental) are his sons. Dr. Niranjani is his daughter-in-law, married to Dr. Sudharsan. Earlier notes described the dental pair as Dr. Madhavan's brother and sister — that was wrong, and the About page must not repeat it. "Two generations of the same family" remains accurate.
+
+**Where procedures actually happen — answered 8 Oct, closing the question open since the start.** Small procedures are done at the clinic: pain block procedures, slabs, casts, injections. Larger surgery goes to partner hospitals, chosen with the patient. Non-robotic surgery is done at partner hospitals in Kanchipuram; robotic joint replacement is done in Chennai. So the clinic performs no surgery on site and no robotic surgery anywhere. This is worth saying plainly on the ortho page rather than leaving it implied — "where will my operation happen" is a real patient question and an honest answer is a differentiator. Do not name the partner hospitals without their permission.
 
 **Registration numbers are not shown at launch** (decided 4 Oct). They go in as a later update once the clinic supplies them. Nothing on the site waits on them.
 
@@ -379,9 +383,9 @@ Everything that needs doing, in the order it needs doing. Tick off anything alre
 
 ### Content still needed before the build
 
-- [ ] A short bio for each doctor
-- [ ] Confirm where the robotic joint replacement procedures actually take place
-- [ ] Verify which of the Planner keyword services the clinic genuinely offers
+- [ ] Doctor backgrounds received 8 Oct — founding story and Dr. Sudharsan's history supplied. Dr. Madhavan's and Dr. Niranjani's own lines still thin
+- [x] Where robotic joint replacement happens — answered 8 Oct, Chennai
+- [x] Planner keyword services verified 8 Oct — physiotherapy (in-house), PRP and laser confirmed. No rheumatologist; that term is off the list
 - [x] WhatsApp number confirmed 4 Oct — 99453 89639 is on WhatsApp
 - [x] Enquiry email — settled 4 Oct as info@raniclinickanchi.com
 - [ ] Dental doctors' photographs for the About page
@@ -405,7 +409,7 @@ Everything that needs doing, in the order it needs doing. Tick off anything alre
 - [ ] Contact form wired and a test enquiry actually received
 - [ ] Pre-launch review with Daniel, including the DNS cutover
 - [ ] **Launch blocker.** Two of the five reviews in reviews.ts contain cure language — "completely cured" and "painfree". Replace both with reviews free of cure or outcome claims before the site goes live. Decided 4 Oct to build with them in place, since building publishes nothing; the swap is a data edit to reviews.ts, not a rebuild. A quoted review is never reworded, so the fix is choosing different ones
-- [ ] **Launch blocker.** Written confirmation from Dr. Madhavan that he has chosen to publish patient video testimonials. Raised when the videos went back in on 4 Oct and still not obtained. The section is built and the videos are in the data file, so nothing stops this going live by accident — which is exactly why it needs ticking before launch, not after
+- [x] Patient testimonial consent — confirmed in writing 8 Oct. Dr. Madhavan states the clinic can publish the testimonials and has the patients' consent. Keep his message on file. Worth knowing: the consent belongs to the patients, so his word is the clinic's assurance that it exists, not the consent itself. That is the normal arrangement and it is enough to proceed.
 - [ ] Open each patient video in a normal browser on a real phone and confirm the embed plays. The browser pane could not verify this; Instagram embeds fail often enough that it has to be checked on the real thing
 - [ ] No page still carries `draft: true`. One grep answers it, and it covers both the noindex tags and the sitemap at once
 
@@ -430,8 +434,8 @@ Everything that needs doing, in the order it needs doing. Tick off anything alre
 
 ## Open questions
 
-- [ ] Verify which of the listed services the clinic actually offers before targeting those keywords — see Keywords
-- [ ] Confirm where the robotic joint replacement procedures actually take place
+- [x] Services verified 8 Oct — physiotherapy, PRP hair therapy and laser skin treatment all confirmed as provided at the clinic. Physiotherapy is in-house. Rheumatology was a false positive in the same blanket answer — there is no rheumatologist; Dr. Madhavan manages those cases
+- [x] Where robotic joint replacement happens — answered 8 Oct. Chennai, not Kanchipuram, and not at the clinic. Recorded in The doctors
 - [x] WhatsApp number — confirmed 4 Oct that 99453 89639 is on WhatsApp. The WhatsApp buttons can go live
 - [ ] Ortho page title — lead with the search term or with The Knee Clinic? Show him both versions rather than asking in the abstract
 - [ ] Verify the GBP traffic figures used in the proposal are current, and state the date range they cover
@@ -446,6 +450,8 @@ Everything that needs doing, in the order it needs doing. Tick off anything alre
 - [x] Skin review among the five — decided 4 Oct, deferred. The five ship as they are; one gets swapped for a skin review once patients leave one after launch. Nothing in the build blocks it — reviews.ts is five hand-edited entries
 - [x] Testimonial video mix — decided 4 Oct, deferred. The five links ship as supplied and get replaced once real patient-speaking videos exist. videos.ts is five hand-edited entries, so swapping them is a data change, not a rebuild
 - [x] Social handles — confirmed 4 Oct. The Instagram, Facebook and YouTube handles supplied are the live accounts and are correct as spelled, including the Facebook and YouTube spelling that differs from Instagram's. Use them exactly as given; the client may create new ones later, but not before launch
+- [x] **Rheumatology — answered 8 Oct. There is no rheumatologist.** Dr. Madhavan manages those cases as an orthopaedic surgeon. So "rheumatologist Kanchipuram" is permanently off the keyword list and no page may use the word to describe a service. Arthritis and joint pain are already covered by the ortho terms, which is where those patients were going to land anyway. The blanket "all done here" turned out to be right about three of the four and wrong about this one, which is why the question was worth asking twice.
+- [x] Physiotherapy — answered 8 Oct. Done in-house, not referred out. The ortho page can describe it as a service at the clinic
 
 ## Parked for later
 

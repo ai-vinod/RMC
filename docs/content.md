@@ -412,7 +412,11 @@ It carries the two facts that matter and it is the only one that says *four doct
 >
 > Four qualified doctors see patients here. Dr. Paramanantham, who has practised for forty years, consults in dermatology and diabetes. Dr. P Madhavan is an orthopaedic surgeon. Dr. P. Sudharsan and Dr. Niranjani look after the dental side. Two generations of the same family, each working in their own field.
 
-**GAP — one paragraph, needs Dr. Madhavan.** How the clinic began in 1985, who opened it, and how it came to cover three specialities. Two or three sentences is plenty. This is the paragraph that makes the page worth reading; everything above it is facts anyone could list from the homepage.
+**Filled 8 Oct** from Dr. Madhavan's written answer. Third paragraph of the story:
+
+> Dr. Paramanantham opened the clinic as a small practice forty years ago, treating patients from Kanchipuram and the villages around it. In those decades he has seen a great many cases of vitiligo, psoriasis, eczema, contact and allergic dermatitis and fungal infections. His sons and daughter-in-law joined later — Dr. Sudharsan and Dr. Niranjani brought dental and root canal treatment to the clinic, and Dr. Madhavan consults in orthopaedics. What began as one doctor's room is now three specialities under one roof.
+
+The family detail is confirmed: Dr. Paramanantham is the father, Dr. Madhavan and Dr. Sudharsan are his sons, and Dr. Niranjani is his daughter-in-law. Earlier notes called the dental pair Dr. Madhavan's brother and sister; that was wrong.
 
 ### Facilities
 
@@ -420,18 +424,31 @@ It carries the two facts that matter and it is the only one that says *four doct
 >
 > Morning consultations run every day including Sunday, 10.30 am to 1.30 pm. Evening consultations run Monday to Saturday, 6.30 pm to 8.30 pm.
 
-**GAP — needs Dr. Madhavan.** Anything about the facilities worth naming: equipment the clinic has invested in, how many consulting rooms, anything patients notice. Without it this section says little more than "there are rooms", which is not worth a heading.
+**Filled 8 Oct.** Replace the facilities paragraph with this:
+
+> The clinic has three consulting rooms, with a laboratory and a pharmacy on the premises — so tests and medicines usually mean one visit rather than three.
+>
+> Morning consultations run every day including Sunday, 10.30 am to 1.30 pm. Evening consultations run Monday to Saturday, 6.30 pm to 8.30 pm.
+
+**Left out, deliberately.** The clinic also offered "high tech dental instrumentation", "high tech ortho instrumentation" and "clean and neat environment". None is usable: the first two are unverifiable claims of the kind the compliance rules exclude, and the third is something every clinic says, so it reads as filler and slightly suggests the opposite. If there is specific equipment worth naming, the name and what it does would be usable — "high tech" on its own is not.
 
 ### Doctor bios
 
 The credential line under each name is already confirmed and appears on the cards. What is missing is the human part — two or three sentences each. When the answers arrive they drop straight into the gaps below and the page is done.
 
-| Doctor | Confirmed line | What is still needed |
-| --- | --- | --- |
-| Dr. Paramanantham | MBBS, DD, Dip. in Diabetes Medicine · Dermatologist and diabetologist · 40 years of experience | **GAP** — where he trained, what he sees most often, why dermatology |
-| Dr. P Madhavan | MBBS, MS (Ortho), FIJR, FIRJR · Trauma and joint replacement surgeon | **GAP** — where he trained, what he sees most often, and the answer on where robotic procedures take place |
-| Dr. P. Sudharsan | BDS, MDS (Conservative & Endodontic Dentistry) · Consultant endodontist — root canal treatment | **GAP** — where he trained, what he sees most often |
-| Dr. Niranjani | BDS, FICD, FIC (IMP) · Consultant cosmetologist and implantologist | **GAP** — where she trained, what she sees most often |
+**Dr. Paramanantham** — drafted 8 Oct from his own account.
+
+> Dr. Paramanantham opened the clinic forty years ago and has practised in Kanchipuram ever since. He treats skin conditions and diabetes, and sees vitiligo, psoriasis, eczema, contact and allergic dermatitis and fungal infections most often, in patients from the town and the villages around it.
+
+**Dr. P. Sudharsan** — drafted 8 Oct.
+
+> Dr. Sudharsan is a certified endodontist. He worked at Apollo Hospitals in Chennai before returning to Kanchipuram to practise here, and handles root canal treatment at the clinic.
+
+One claim was left out of that. The clinic described him as "the first certified root canal specialist in Kanchipuram". It may well be true, but it is unverifiable, it is the kind of first-in-town claim medical advertising norms exclude, and it is not needed — *worked at Apollo Chennai and came back to practise here* is specific, checkable and does more for a patient reading it.
+
+**Dr. P Madhavan** — **GAP.** Nothing supplied in his own words. Two or three sentences: where he trained, what he sees most often, why orthopaedics. He is the one doctor whose page depends on this, since the ortho page is built around him.
+
+**Dr. Niranjani** — **GAP.** Nothing supplied. Two or three sentences: where she trained, what she sees most often. Her credentials cover cosmetic dentistry and implants; nothing says which she does more of.
 
 Keep each bio to two or three sentences. No superlatives, no outcome claims, no "one of the best in Tamil Nadu" — if a doctor sends a line like that, it gets trimmed before it goes on the page.
 

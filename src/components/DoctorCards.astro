@@ -4,6 +4,7 @@ import Section from './Section.astro';
 import SectionHead from './SectionHead.astro';
 import { doctors } from '../data/doctors';
 import { doctorsSection } from '../data/homeCopy';
+import { bios } from '../data/aboutCopy';
 
 interface Props {
   /** The About page version: bigger photos and an anchor on every card */
@@ -35,6 +36,7 @@ const initial = (name: string) => name.trim().split(/\s+/).pop()!.charAt(0).toUp
             <p class="rl">{doc.role}</p>
             {doc.note && <span class="yr">{doc.note}</span>}
           </div>
+          {large && bios[doc.id] && <p class="bio">{bios[doc.id]}</p>}
         </div>
       ))
     }
@@ -71,6 +73,7 @@ const initial = (name: string) => name.trim().split(/\s+/).pop()!.charAt(0).toUp
     object-position: center top;
   }
   .large .doc {
+    flex-wrap: wrap;
     scroll-margin-top: 90px;
     padding: 20px;
   }
@@ -137,6 +140,13 @@ const initial = (name: string) => name.trim().split(/\s+/).pop()!.charAt(0).toUp
     margin: 4px 0 0;
     font-size: 13.5px;
     color: var(--ink-secondary);
+  }
+  .bio {
+    flex: 1 1 100%;
+    margin: 0;
+    font-size: var(--text-sm);
+    line-height: 1.5;
+    max-width: 62ch;
   }
   .yr {
     display: inline-block;
